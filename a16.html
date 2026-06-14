@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDA Group | Global Foundation & Sheet Piling Engineering</title>
+    <style>
+        /* Üst Düzey Kurumsal Renk Paleti ve Temel Düzen */
+        :root {
+            --ana-lacivert: #0B2545;
+            --yardimci-mavi: #134074;
+            --acik-mavi: #8da9c4;
+            --saf-beyaz: #FFFFFF;
+            --soft-gri: #f8fafc;
+            --border-gri: #e2e8f0;
+            --ticker-bg: #071931;
+            --bist-yesil: #10b981;
+            --bist-kirmizi: #ef4444;
+            --gradient-accent: linear-gradient(135deg, #134074 0%, #0B2545 100%);
+            --card-bg: #FFFFFF;
+            --text-main: #1e293b;
+        }
+
+        /* Karanlık Mod Teması */
+        body.dark-theme {
+            --ana-lacivert: #020617;
+            --yardimci-mavi: #1e293b;
+            --acik-mavi: #38bdf8;
+            --saf-beyaz: #0f172a;
+            --soft-gri: #1e293b;
+            --border-gri: #334155;
+            --ticker-bg: #020617;
+            --card-bg: #1e293b;
+            --text-main: #f1f5f9;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+        }
+
+        body {
+            background-color: var(--saf-beyaz);
+            color: var(--text-main);
+            padding-bottom: 40px;
+        }
+
+        /* Üst Menü (Header) */
+        header {
+            background-color: rgba(11, 37, 69, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        body.dark-theme header {
+            background-color: rgba(2, 6, 23, 0.98);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            color: #FFFFFF;
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: 1.5px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .logo span {
+            color: var(--acik-mavi);
+            font-weight: 400;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        nav button {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-left: 18px;
+            cursor: pointer;
+            padding: 8px 0;
+            position: relative;
+            letter-spacing: 0.5px;
+        }
+
+        nav button::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--acik-mavi);
+            transition: width 0.3s ease;
+        }
+
+        nav button:hover::after, nav button.active::after {
+            width: 100%;
+        }
+
+        nav button:hover, nav button.active {
+            color: #FFFFFF;
+        }
+
+        /* Kontroller (Dil ve Tema Seçici) */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-left: 20px;
+        }
+
+        .theme-toggle, .lang-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #FFFFFF;
+            padding: 6px 12px;
+            font-size: 12px;
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .theme-toggle:hover, .lang-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--acik-mavi);
+        }
+
+        .ihale-btn {
+            background: linear-gradient(135deg, #1e3a8a 0%, #134074 100%);
+            color: #FFFFFF;
+            padding: 10px 24px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            border: 1px solid rgba(255,255,255,0.2);
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(19, 64, 116, 0.2);
+        }
+
+        .ihale-btn:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 20px rgba(19, 64, 116, 0.4);
+        }
+
+        /* Çoklu Sayfa Mimarisi */
+        .page {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+
+        .page.active-page {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Ortak Sayfa Tasarımları */
+        section { padding: 90px 20px; }
+        .container { max-width: 1200px; margin: 0 auto; }
+        .section-title { text-align: center; font-size: 34px; color: var(--text-main); margin-bottom: 15px; font-weight: 800; text-transform: uppercase; }
+        .section-subtitle { text-align: center; color: #64748b; font-size: 16px; margin-bottom: 60px; max-width: 750px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+        .section-title::after { content: ''; display: block; width: 60px; height: 4px; background: linear-gradient(90deg, var(--yardimci-mavi), var(--acik-mavi)); margin: 15px auto 0 auto; }
+
+        /* Anasayfa Hero */
+        .hero {
+            background: linear-gradient(rgba(11, 37, 69, 0.88), rgba(7, 25, 49, 0.94)), 
+                        url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=1920') no-repeat center center/cover;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 160px 20px;
+        }
+        .hero h1 { font-size: 48px; font-weight: 900; margin-bottom: 25px; line-height: 1.3; }
+        .hero p { font-size: 18px; color: #cbd5e1; max-width: 900px; margin: 0 auto 45px auto; line-height: 1.8; font-weight: 300; }
+        .hero button { background-color: #FFFFFF; color: #0B2545; padding: 16px 40px; border: none; font-weight: 700; text-transform: uppercase; font-size: 13px; cursor: pointer; letter-spacing: 0.5px; }
+        .hero button:hover { background-color: var(--acik-mavi); color: #FFFFFF; }
+
+        /* Projeler Gridi */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 35px; }
+        .ref-card { background-color: var(--card-bg); border: 1px solid var(--border-gri); overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.02); }
+        .ref-img-container { height: 230px; background-size: cover; background-position: center; position: relative; }
+        .ref-badge { position: absolute; top: 15px; left: 15px; background-color: #0B2545; color: #FFFFFF; padding: 6px 14px; font-size: 10px; font-weight: 700; }
+        .ref-badge.active-proj { background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); }
+        .ref-content { padding: 25px; }
+        .ref-content h4 { color: var(--acik-mavi); font-size: 18px; margin-bottom: 12px; font-weight: 700; }
+        body:not(.dark-theme) .ref-content h4 { color: var(--ana-lacivert); }
+        .ref-content p { font-size: 14px; line-height: 1.7; }
+
+        /* Hizmetler & Makine Gridi */
+        .service-grid, .machine-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 30px; }
+        .service-card, .machine-card { background-color: var(--card-bg); border: 1px solid var(--border-gri); display: flex; flex-direction: column; overflow: hidden; }
+        .service-img-wrapper, .machine-img-wrapper { height: 230px; }
+        .service-img, .machine-img { width: 100%; height: 100%; background-size: cover; background-position: center; }
+        .service-info, .machine-info { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .service-info h4, .machine-info h4 { font-size: 19px; font-weight: 700; margin-bottom: 10px; color: var(--acik-mavi); }
+        body:not(.dark-theme) .service-info h4, body:not(.dark-theme) .machine-info h4 { color: var(--ana-lacivert); }
+        .service-info p, .machine-info p { font-size: 14px; color: #64748b; line-height: 1.7; margin-bottom: 20px; }
+        .machine-badge-row { display: flex; gap: 10px; }
+        .machine-spec { background-color: rgba(56, 189, 248, 0.1); color: var(--acik-mavi); padding: 5px 12px; font-size: 11px; font-weight: 700; }
+        body:not(.dark-theme) .machine-spec { background-color: rgba(19, 64, 116, 0.05); color: var(--yardimci-mavi); }
+
+        /* Global Hakkımızda */
+        .about-full { display: flex; flex-direction: column; gap: 40px; }
+        .about-text-block { font-size: 16px; line-height: 2; text-align: justify; }
+        .about-text-block p { margin-bottom: 25px; }
+        .about-vision-mission { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 20px; }
+        .v-m-box { background-color: var(--soft-gri); padding: 35px; border-left: 4px solid var(--acik-mavi); }
+        .v-m-box h3 { color: var(--acik-mavi); margin-bottom: 15px; font-size: 20px; font-weight: 700; }
+        body:not(.dark-theme) .v-m-box h3 { color: var(--ana-lacivert); }
+        .v-m-box p { font-size: 14px; line-height: 1.8; color: #64748b; }
+        .about-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 30px; }
+        .stat-box { background: var(--yardimci-mavi); color: #FFFFFF; padding: 30px 15px; text-align: center; border-radius: 4px; }
+        .stat-box h3 { font-size: 36px; color: var(--acik-mavi); margin-bottom: 5px; font-weight: 800; }
+        .stat-box p { font-size: 11px; font-weight: 700; letter-spacing: 1px; color: #cbd5e1; }
+
+        /* Belgelerimiz */
+        .docs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 25px; }
+        .doc-card { border: 1px solid var(--border-gri); padding: 30px; text-align: center; background-color: var(--card-bg); }
+        .doc-icon { font-size: 40px; color: var(--acik-mavi); margin-bottom: 15px; }
+        .doc-card h4 { color: var(--text-main); font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+        .doc-card p { font-size: 12px; color: #64748b; }
+
+        /* Kariyer */
+        .career-split { display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; }
+        .career-info h3 { color: var(--acik-mavi); margin-bottom: 20px; font-size: 22px; }
+        body:not(.dark-theme) .career-info h3 { color: var(--ana-lacivert); }
+        .career-info p { font-size: 15px; line-height: 1.8; color: #64748b; margin-bottom: 30px; }
+        .job-position { border: 1px solid var(--border-gri); padding: 20px; margin-bottom: 15px; background-color: var(--card-bg); }
+        .job-position h4 { color: var(--text-main); font-size: 16px; margin-bottom: 5px; }
+        .job-position p { font-size: 13px; color: #64748b; }
+
+        /* İletişim & Simülatör Düzeni */
+        .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .calculator-box { background: var(--card-bg); border: 2px solid var(--acik-mavi); padding: 30px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .calculator-box h3 { font-size: 20px; font-weight: 800; margin-bottom: 20px; color: var(--acik-mavi); text-transform: uppercase; }
+        body:not(.dark-theme) .calculator-box h3 { color: var(--ana-lacivert); }
+        .calc-group { margin-bottom: 15px; }
+        .calc-group label { display: block; font-size: 12px; font-weight: 700; margin-bottom: 6px; color: #64748b; text-transform: uppercase; }
+        .calc-group input, .calc-group select { width: 100%; padding: 12px; border: 1px solid var(--border-gri); background: var(--soft-gri); color: var(--text-main); font-size: 14px; }
+        .calc-btn { background: var(--acik-mavi); color: #020617; width: 100%; padding: 12px; font-weight: 700; border: none; text-transform: uppercase; cursor: pointer; font-size: 13px; margin-top: 10px; }
+        body:not(.dark-theme) .calc-btn { background: var(--ana-lacivert); color: #FFFFFF; }
+        .calc-result { background: var(--soft-gri); padding: 15px; border-left: 4px solid var(--acik-mavi); margin-top: 20px; font-size: 15px; font-weight: 700; }
+
+        .contact-info h3, .contact-form h3 { color: var(--acik-mavi); margin-bottom: 25px; font-size: 22px; font-weight: 800; }
+        body:not(.dark-theme) .contact-info h3, body:not(.dark-theme) .contact-form h3 { color: var(--ana-lacivert); }
+        .info-item { margin-bottom: 25px; border-left: 3px solid var(--acik-mavi); padding-left: 15px; }
+        .info-item label { font-size: 11px; text-transform: uppercase; color: #64748b; font-weight: 700; margin-bottom: 4px; display: block; }
+        .info-item p { font-size: 16px; font-weight: 600; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 14px; border: 1px solid var(--border-gri); background-color: var(--soft-gri); color: var(--text-main); margin-bottom: 15px; font-size: 14px; }
+        .contact-form textarea { height: 130px; resize: none; }
+        .submit-btn { background: var(--gradient-accent); color: #FFFFFF; padding: 15px; border: none; font-weight: 700; text-transform: uppercase; font-size: 13px; cursor: pointer; width: 100%; letter-spacing: 0.5px; }
+
+        /* Alt Ekonomi Şeridi */
+        .ticker-wrap { position: fixed; bottom: 0; width: 100%; overflow: hidden; height: 40px; background-color: var(--ticker-bg); border-top: 2px solid var(--acik-mavi); z-index: 9999; display: flex; align-items: center; }
+        .ticker-title { background: rgba(255,255,255,0.05); color: #FFFFFF; padding: 0 20px; height: 100%; display: flex; align-items: center; font-weight: 800; font-size: 11px; border-right: 2px solid var(--border-gri); }
+        .ticker { display: flex; width: 100%; white-space: nowrap; padding-left: 100%; animation: marquee 35s linear infinite; }
+        .ticker-item { display: inline-flex; align-items: center; padding: 0 25px; color: #94a3b8; font-size: 13px; font-weight: 600; }
+        .ticker-item strong { color: #FFFFFF; margin-right: 8px; }
+        .up { color: var(--bist-yesil); font-weight: bold; }
+        .down { color: var(--bist-kirmizi); font-weight: bold; }
+        @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
+
+        @media (max-width: 1200px) {
+            .header-container { flex-direction: column; gap: 15px; text-align: center; }
+            nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
+            nav button { margin-left: 8px; margin-right: 8px; }
+            .about-stats { grid-template-columns: 1fr 1fr; }
+            .career-split, .contact-wrapper, .about-vision-mission { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ÜST NAVİGASYON VE KONTROLLER -->
+    <header>
+        <div class="header-container">
+            <a onclick="showPage('anasayfa')" class="logo">GDA<span>GROUP</span></a>
+            <nav>
+                <button id="nav-anasayfa" class="active" onclick="showPage('anasayfa')" data-tr="Anasayfa" data-en="Home">Anasayfa</button>
+                <button id="nav-hakkimizda" onclick="showPage('hakkimizda')" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</button>
+                <button id="nav-hizmetler" onclick="showPage('hizmetler')" data-tr="Hizmetlerimiz" data-en="Services">Hizmetlerimiz</button>
+                <button id="nav-projeler" onclick="showPage('projeler')" data-tr="Projelerimiz" data-en="Projects">Projelerimiz</button>
+                <button id="nav-makineler" onclick="showPage('makineler')" data-tr="Makine Parkuru" data-en="Fleet">Makine Parkuru</button>
+                <button id="nav-belgeler" onclick="showPage('belgeler')" data-tr="Belgeler & Kalite" data-en="Quality">Belgeler & Kalite</button>
+                <button id="nav-kariyer" onclick="showPage('kariyer')" data-tr="Kariyer" data-en="Careers">Kariyer</button>
+                <button id="nav-iletisim" onclick="showPage('iletisim')" data-tr="İletişim" data-en="Contact">İletişim</button>
+            </nav>
+            <div class="controls">
+                <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. SAYFA: ANASAYFA -->
+    <div id="page-anasayfa" class="page active-page">
+        <section class="hero">
+            <h1 id="hero-title" data-tr="Global Foundation Engineering & Heavy Shoring Systems" data-en="Global Foundation Engineering & Heavy Shoring Systems">Global Foundation Engineering & Heavy Shoring Systems</h1>
+            <p id="hero-desc" data-tr="Uluslararası standartlarda, kıtalararası operasyon kabiliyetiyle küresel altyapı, derin temel iksa ve ileri teknoloji çelik palplanş mühendisliğinde dünyanın güvenilir çözüm ortağıyız." data-en="We are the world's trusted solution partner in global infrastructure, deep foundation shoring, and high-tech steel sheet piling engineering with international standards and intercontinental operational capability.">Uluslararası standartlarda, kıtalararası operasyon kabiliyetiyle küresel altyapı, derin temel iksa ve ileri teknoloji çelik palplanş mühendisliğinde dünyanın güvenilir çözüm ortağıyız.</p>
+            <button onclick="showPage('hakkimizda')" id="hero-btn" data-tr="Global Kurumsal Profili Keşfedin" data-en="Explore Global Corporate Profile">Global Kurumsal Profili Keşfedin</button>
+        </section>
+    </div>
+
+    <!-- 2. SAYFA: HAKKIMIZDA -->
+    <div id="page-hakkimizda" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Global Kurumsal Profilimiz" data-en="Our Global Corporate Profile">Global Kurumsal Profilimiz</h2>
+                <p class="section-subtitle" data-tr="Kıtalararası mühendislik vizyonu ve sürdürülebilir zemin teknolojileriyle geleceğin altyapısını inşa ediyoruz." data-en="We build the infrastructure of the future with intercontinental engineering vision and sustainable soil technologies.">Kıtalararası mühendislik vizyonu ve sürdürülebilir zemin teknolojileriyle geleceğin altyapısını inşa ediyoruz.</p>
+                
+                <div class="about-full">
+                    <div class="about-text-block" id="about-text">
+                        <p data-tr="GDA Group, kuruluşundan bu yana küresel zemin mühendisliği, derin kazı stabilizasyonu ve ağır iksa sistemleri sektörlerinde lider bir aktör olma vizyonuyla faaliyetlerini yürütmektedir. Şirketimiz, lokal sınırların ötesine geçerek uluslararası pazarlarda, çok uluslu konsorsiyumların, bakanlıkların, küresel ölçekli yüklenicilerin ve liman otoritelerinin en kritik projelerinde stratejik anahtar teslim yüklenici ve mühendislik ortağı konumuna erişmiştir." data-en="GDA Group has been operating since its establishment with the vision of becoming a leading player in the global soil engineering, deep excavation stabilization, and heavy shoring systems sectors. Going beyond local boundaries, our company has become a strategic turnkey contractor and engineering partner in the most critical projects of multinational business groups, ministries, global contractors, and port authorities in international markets.">GDA Group, kuruluşundan bu yana küresel zemin mühendisliği, derin kazı stabilizasyonu ve ağır iksa sistemleri sektörlerinde lider bir aktör olma vizyonuyla faaliyetlerini yürütmektedir.</p>
+                        <p data-tr="Uzmanlık alanımızı sadece çelik palplanş teknolojileri, hidrolik baskılama sistemleri ve deniz/kara tahkimat yapıları üzerine konumlandırarak, odaklanmış mühendislik gücünün en üst düzey örneklerini sunmaktayız. Dünyanın en zorlu zemin koşullarında ve sismik açıdan yüksek risk barındıran bölgelerinde, ileri teknoloji hesaplama yöntemleri ve yenilikçi uygulamalarımızla kalıcı ve güvenli çözümler üretmekteyiz." data-en="By positioning our field of expertise solely on steel sheet piling technologies, hydraulic jacking systems, and marine/land fortification structures, we offer the highest examples of focused engineering power. We produce permanent and safe solutions with high-tech calculation methods and innovative applications in the world's most challenging soil conditions and highly seismic regions.">Uzmanlık alanımızı sadece çelik palplanş teknolojileri, hidrolik baskılama sistemleri ve deniz/kara tahkimat yapıları üzerine konumlandırarak, odaklanmış mühendislik gücünün en üst düzey örneklerini sunmaktayız.</p>
+                    </div>
+
+                    <div class="about-vision-mission">
+                        <div class="v-m-box">
+                            <h3 data-tr="Global Vizyonumuz" data-en="Global Vision">Global Vizyonumuz</h3>
+                            <p data-tr="Zemin ve altyapı mühendisliğinde dünyanın her coğrafyasında, en karmaşık mühendislik problemlerine teknoloji ve inovasyon odaklı çözümler üreterek lider marka olmak." data-en="To be the leading brand in soil and infrastructure engineering in every geography of the world, producing technology and innovation-oriented solutions to the most complex engineering problems.">Zemin ve altyapı mühendisliğinde dünyanın her coğrafyasında, en karmaşık mühendislik problemlerine teknoloji ve inovasyon odaklı çözümler üreterek lider marka olmak.</p>
+                        </div>
+                        <div class="v-m-box">
+                            <h3 data-tr="Küresel Misyonumuz" data-en="Global Mission">Küresel Misyonumuz</h3>
+                            <p data-tr="Uluslararası kalite, çevre ve iş güvenliği standartlarından ödün vermeden dünya genelinde nesiller boyu güvenle yaşayacak altyapı zemin temelleri sunmak." data-en="Without compromising on international quality, environmental and occupational safety standards, to offer infrastructure soil foundations that will live safely for generations worldwide.">Uluslararası kalite, çevre ve iş güvenliği standartlarından ödün vermeden dünya genelinde nesiller boyu güvenle yaşayacak altyapı zemin temelleri sunmak.</p>
+                        </div>
+                    </div>
+
+                    <div class="about-stats">
+                        <div class="stat-box"><h3>%100</h3><p data-tr="MEVZUAT UYUMU" data-en="COMPLIANCE">MEVZUAT UYUMU</p></div>
+                        <div class="stat-box"><h3>0</h3><p data-tr="İŞ KAZASI" data-en="ACCIDENTS">İŞ KAZASI</p></div>
+                        <div class="stat-box"><h3>FIDIC</h3><p data-tr="SÖZLEŞME" data-en="CONTRACTS">SÖZLEŞME</p></div>
+                        <div class="stat-box"><h3>Global</h3><p data-tr="ERİŞİM" data-en="REACH">ERİŞİM</p></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 3. SAYFA: HİZMETLERİMİZ -->
+    <div id="page-hizmetler" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Mühendislik Hizmetlerimiz" data-en="Engineering Services">Mühendislik Hizmetlerimiz</h2>
+                <p class="section-subtitle" data-tr="Çelik palplanş ve derin zemin mühendisliğinde dünya standartlarında uçtan uca çözümler." data-en="End-to-end solutions in steel sheet piling and deep soil engineering at world standards.">Çelik palplanş ve derin zemin mühendisliğinde dünya standartlarında uçtan uca çözümler.</p>
+                <div class="service-grid">
+                    <div class="service-card">
+                        <div class="service-img-wrapper"><div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600');"></div></div>
+                        <div class="service-info">
+                            <h4 data-tr="Çelik Palplanş İmalat & Söküm" data-en="Steel Sheet Piling Driving & Extraction">Çelik Palplanş İmalat & Söküm</h4>
+                            <p data-tr="U ve Z tipi yüksek mukavemetli çelik profillerin yüksek frekanslı vibratörler kullanılarak hassasiyetle çakılması." data-en="Precision driving of U and Z type high-strength steel profiles using high-frequency vibrators.">U ve Z tipi yüksek mukavemetli çelik profillerin yüksek frekanslı vibratörler kullanılarak hassasiyetle çakılması.</p>
+                        </div>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-img-wrapper"><div class="service-img" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600');"></div></div>
+                        <div class="service-info">
+                            <h4 data-tr="Sessiz & Sarsıntısız Hidrolik Baskılama" data-en="Silent Hydraulic Piling">Sessiz & Sarsıntısız Hidrolik Baskılama</h4>
+                            <p data-tr="Kentsel alanlarda gürültü ve vibrasyon oluşturmadan, saf hidrolik güçle çelik palplanş presleme uygulamaları." data-en="Steel sheet piling pressing applications with pure hydraulic power without generating noise and vibration in urban areas.">Kentsel alanlarda gürültü ve vibrasyon oluşturmadan, saf hidrolik güçle çelik palplanş presleme uygulamaları.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 4. SAYFA: PROJELERİMİZ -->
+    <div id="page-projeler" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Global Projelerimiz" data-en="Global Projects">Global Projelerimiz</h2>
+                <p class="section-subtitle" data-tr="Uluslararası arenalarda tamamlanan mega yapılarımız." data-en="Our completed mega structures in international arenas.">Uluslararası arenalarda tamamlanan mega yapılarımız.</p>
+                <div class="grid-3">
+                    <div class="ref-card">
+                        <div class="ref-img-container" style="background-image: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=600');">
+                            <span class="ref-badge active-proj" data-tr="GLOBAL AKTİF" data-en="GLOBAL ACTIVE">GLOBAL AKTİF</span>
+                        </div>
+                        <div class="ref-content">
+                            <h4>T.C. Ulaştırma Bakanlığı</h4>
+                            <p data-tr="Demiryolu Hattı İksası: Trans-Avrupa ağları ile entegre yüksek hızlı tren güzergah hattında derin kazı stabilizasyonu." data-en="Railway Line Shoring: Deep excavation stabilization on the high-speed train route integrated with Trans-European networks.">Demiryolu Hattı İksası: Trans-Avrupa ağları ile entegre yüksek hızlı tren güzergah hattında derin kazı stabilizasyonu.</p>
+                        </div>
+                    </div>
+                    <div class="ref-card">
+                        <div class="ref-img-container" style="background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=600');">
+                            <span class="ref-badge active-proj" data-tr="GLOBAL AKTİF" data-en="GLOBAL ACTIVE">GLOBAL AKTİF</span>
+                        </div>
+                        <div class="ref-content">
+                            <h4>Metropol Büyükşehir Belediyesi</h4>
+                            <p data-tr="Makro Dere Islahı & Hidrolik Perde: Şehirlerarası taşkın kontrol sahasında su sızdırmaz palplanş çakımı." data-en="Macro River Remediation: Water-tight sheet piling installations in intercity flood control zones.">Makro Dere Islahı & Hidrolik Perde: Şehirlerarası taşkın kontrol sahasında su sızdırmaz palplanş çakımı.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 5. SAYFA: MAKİNE PARKURU -->
+    <div id="page-makineler" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Ağır Makine Parkurumuz" data-en="Heavy Machinery Fleet">Ağır Makine Parkurumuz</h2>
+                <p class="section-subtitle" data-tr="Tamamı envanterimize kayıtlı yüksek teknolojili özmal makine filomuz." data-en="Our high-tech proprietary machinery fleet entirely registered in our inventory.">Tamamı envanterimize kayıtlı yüksek teknolojili özmal makine filomuz.</p>
+                <div class="machine-grid">
+                    <div class="machine-card">
+                        <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('https://images.unsplash.com/photo-1579532561814-a44de600301d?q=80&w=500');"></div></div>
+                        <div class="machine-info">
+                            <h4>ICE Yüksek Frekanslı Vibratörler</h4>
+                            <p data-tr="Zemin yapısına minimum deformasyon, maksimum penetrasyon gücü." data-en="Minimum soil deformation, maximum penetration power.">Zemin yapısına minimum deformasyon, maksimum penetrasyon gücü.</p>
+                            <div class="machine-badge-row"><span class="machine-spec">ICE Global</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 6. SAYFA: BELGELER & KALİTE -->
+    <div id="page-belgeler" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Uluslararası Belgelerimiz" data-en="International Certificates">Uluslararası Belgelerimiz</h2>
+                <div class="docs-grid">
+                    <div class="doc-card">
+                        <div class="doc-icon">📜</div>
+                        <h4>ISO 9001:2015</h4>
+                        <p data-tr="Global Kalite Yönetim Sistemi" data-en="Global Quality Management">Global Kalite Yönetim Sistemi</p>
+                    </div>
+                    <div class="doc-card">
+                        <div class="doc-icon">🛡️</div>
+                        <h4>ISO 45001:2018</h4>
+                        <p data-tr="Uluslararası İş Sağlığı Güvenliği" data-en="International Occupational Health">Uluslararası İş Sağlığı Güvenliği</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 7. SAYFA: KARİYER -->
+    <div id="page-kariyer" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Kariyer Fırsatları" data-en="Career Opportunities">Kariyer Fırsatları</h2>
+                <div class="career-split">
+                    <div class="career-info">
+                        <h3 data-tr="GDA Group Yetenek Yönetimi" data-en="GDA Group Talent Management">GDA Group Yetenek Yönetimi</h3>
+                        <p data-tr="Uluslararası şantiyelerimizde görev alacak mühendisler arıyoruz." data-en="We are looking for engineers to take part in our international construction sites.">Uluslararası şantiyelerimizde görev alacak mühendisler arıyoruz.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- 8. SAYFA: İLETİŞİM & SİMÜLATÖR -->
+    <div id="page-iletisim" class="page">
+        <section>
+            <div class="container">
+                <h2 class="section-title" data-tr="Küresel İletişim & RFP Portalı" data-en="Global Contact & RFP Portal">Küresel İletişim & RFP Portalı</h2>
+                <p class="section-subtitle" data-tr="Proje detaylarınızı girerek mühendislik simülatörümüzü kullanabilirsiniz." data-en="You can use our engineering simulator by entering your project details.">Proje detaylarınızı girerek mühendislik simülatörümüzü kullanabilirsiniz.</p>
+                
+                <div class="contact-wrapper">
+                    <!-- Akıllı Mühendislik Hesaplama Aracı -->
+                    <div class="calculator-box">
+                        <h3 data-tr="⚙️ Palplanş Tonaj Hesaplayıcı" data-en="⚙️ Sheet Piling Tonnage Calculator">⚙️ Palplanş Tonaj Hesaplayıcı</h3>
+                        <div class="calc-group">
+                            <label data-tr="Hat Uzunluğu (Metre)" data-en="Line Length (Meters)">Hat Uzunluğu (Metre)</label>
+                            <input type="number" id="calc-length" value="100" min="1">
+                        </div>
+                        <div class="calc-group">
+                            <label data-tr="Palplanş Profil Tipi" data-en="Sheet Pile Profile Type">Palplanş Profil Tipi</label>
+                            <select id="calc-type">
+                                <option value="75">Hafif / Orta Tip (GU 16-22) ~ 75kg/m²</option>
+                                <option value="120">Ağır Tip (Larssen / PU 28) ~ 120kg/m²</option>
+                                <option value="160">Ekstra Ağır / Deniz Tipi ~ 160kg/m²</option>
+                            </select>
+                        </div>
+                        <div class="calc-group">
+                            <label data-tr="Çakım / Profil Derinliği (Metre)" data-en="Driving Depth (Meters)">Çakım / Profil Derinliği (Metre)</label>
+                            <input type="number" id="calc-depth" value="12" min="1">
+                        </div>
+                        <button class="calc-btn" onclick="calculateTonnage()" data-tr="Mühendislik Analizi Yap" data-en="Run Engineering Analysis">Mühendislik Analizi Yap</button>
+                        <div class="calc-result" id="tonnage-result" data-tr="Tahmini Çelik İhtiyacı: -- Ton" data-en="Estimated Steel Needed: -- Tons">Tahmini Çelik İhtiyacı: -- Ton</div>
+                    </div>
+
+                    <!-- İletişim Formu -->
+                    <div class="contact-form">
+                        <h3 data-tr="RFP / Proje Teklif Formu" data-en="RFP / Project Proposal Form">RFP / Proje Teklif Formu</h3>
+                        <form action="#" method="POST" onsubmit="event.preventDefault(); alert('RFP Received.');">
+                            <input type="text" placeholder="Company / Firm Name" required>
+                            <input type="email" placeholder="Corporate E-Mail" required>
+                            <textarea id="form-msg" placeholder="Project Details..." required></textarea>
+                            <button type="submit" class="submit-btn" data-tr="İhale Departmanına Gönder" data-en="Submit to Tender Dept">İhale Departmanına Gönder</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- CANLI BIST ŞERİDİ -->
+    <div class="ticker-wrap">
+        <div class="ticker-title">BIST LIVE</div>
+        <div class="ticker">
+            <div class="ticker-item"><strong>XU100:</strong> 13,938.48 <span class="up">▲ %1.42</span></div>
+            <div class="ticker-item"><strong>EREGL:</strong> 74.20 <span class="up">▲ %0.85</span></div>
+            <div class="ticker-item"><strong>KRDMD:</strong> 38.40 <span class="up">▲ %1.12</span></div>
+            <div class="ticker-item"><strong>CIMSA:</strong> 42.15 <span class="up">▲ %2.04</span></div>
+        </div>
+    </div>
+
+    <!-- Gelişmiş JavaScript Sistemleri -->
+    <script>
+        let currentLang = 'TR';
+
+        // 1. Çok Sayfalı Menü Yönetimi (Her başlık farklı sayfada)
+        function showPage(pageId) {
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => page.classList.remove('active-page'));
+
+            const selectedPage = document.getElementById('page-' + pageId);
+            if(selectedPage) {
+                selectedPage.classList.add('active-page');
+            }
+
+            const buttons = document.querySelectorAll('nav button');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            const activeBtn = document.getElementById('nav-' + pageId);
+            if(activeBtn) {
+                activeBtn.classList.add('active');
+            }
+
+            window.scrollTo(0, 0);
+        }
+
+        // 2. Karanlık Mod Geçiş Sistemi
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const btn = document.querySelector('.theme-toggle');
+            btn.innerHTML = document.body.classList.contains('dark-theme') ? '☀️' : '🌙';
+        }
+
+        // 3. Gerçek Zamanlı Çift Dil Sistemi (TR/EN)
+        function toggleLanguage() {
+            currentLang = currentLang === 'TR' ? 'EN' : 'TR';
+            document.querySelector('.lang-toggle').innerText = currentLang === 'TR' ? 'EN' : 'TR';
+            
+            const elements = document.querySelectorAll('[data-tr]');
+            elements.forEach(el => {
+                el.innerText = currentLang === 'TR' ? el.getAttribute('data-tr') : el.getAttribute('data-en');
+            });
+        }
+
+        // 4. Mühendislik Palplanş Tonaj Hesaplama Algoritması
+        function calculateTonnage() {
+            const length = parseFloat(document.getElementById('calc-length').value);
+            const weightPerSqm = parseFloat(document.getElementById('calc-type').value);
+            const depth = parseFloat(document.getElementById('calc-depth').value);
+
+            if (isNaN(length) || isNaN(depth)) return;
+
+            // Formül: Toplam Alan (m²) * Metrekare Ağırlığı (kg) / 1000 = Toplam Tonaj
+            const totalArea = length * depth;
+            const totalWeightKg = totalArea * weightPerSqm;
+            const tonnage = (totalWeightKg / 1000).toFixed(1);
+
+            const resultDiv = document.getElementById('tonnage-result');
+            
+            if(currentLang === 'TR') {
+                resultDiv.innerText = `Tahmini Çelik İhtiyacı: ${tonnage} Ton`;
+                document.getElementById('form-msg').value = `Hesaplama Aracı Analizi: ${length} metre hat uzunluğunda ve ${depth} metre derinliğinde proje için ${tonnage} ton çelik palplanş ihtiyacı öngörülmüştür. Teknik teklif talep ediyoruz.`;
+            } else {
+                resultDiv.innerText = `Estimated Steel Needed: ${tonnage} Tons`;
+                document.getElementById('form-msg').value = `Simulator Analysis: For a project length of ${length}m and depth of ${depth}m, an estimated ${tonnage} tons of steel sheet piling is required. Requesting a technical proposal.`;
+            }
+        }
+    </script>
+</body>
+</html>
