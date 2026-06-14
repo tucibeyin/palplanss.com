@@ -255,6 +255,41 @@
         .job-position h4 { color: var(--text-main); font-size: 16px; margin-bottom: 5px; }
         .job-position p { font-size: 13px; color: #64748b; }
 
+        /* Kariyer Sayfası */
+        .career-hero { background: linear-gradient(rgba(11,37,69,0.91), rgba(7,25,49,0.97)), url('images/foto8.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
+        .career-hero h2 { font-size:40px; font-weight:900; margin-bottom:18px; line-height:1.3; }
+        .career-hero p { font-size:17px; color:#cbd5e1; max-width:700px; margin:0 auto; line-height:1.8; }
+
+        .benefit-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:24px; margin-bottom:80px; }
+        .benefit-card { background:var(--card-bg); border:1px solid var(--border-gri); padding:32px 24px; text-align:center; }
+        .benefit-icon { font-size:38px; margin-bottom:16px; }
+        .benefit-card h4 { font-size:16px; font-weight:700; margin-bottom:10px; color:var(--text-main); }
+        .benefit-card p { font-size:13px; color:#64748b; line-height:1.7; }
+
+        .positions-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(340px,1fr)); gap:24px; margin-bottom:80px; }
+        .position-card { background:var(--card-bg); border:1px solid var(--border-gri); border-top:3px solid var(--acik-mavi); padding:28px; display:flex; flex-direction:column; gap:12px; }
+        body:not(.dark-theme) .position-card { border-top-color:var(--yardimci-mavi); }
+        .position-card h4 { font-size:17px; font-weight:700; color:var(--text-main); }
+        .position-tags { display:flex; flex-wrap:wrap; gap:8px; }
+        .pos-tag { background:rgba(19,64,116,0.07); color:var(--yardimci-mavi); padding:4px 12px; font-size:11px; font-weight:700; }
+        body.dark-theme .pos-tag { background:rgba(56,189,248,0.1); color:var(--acik-mavi); }
+        .pos-tag.green { background:rgba(16,185,129,0.1); color:#059669; }
+        .pos-tag.orange { background:rgba(245,158,11,0.1); color:#b45309; }
+        .position-card p { font-size:13px; color:#64748b; line-height:1.7; flex-grow:1; }
+        .apply-btn { align-self:flex-start; background:var(--ana-lacivert); color:#fff; padding:10px 22px; font-size:12px; font-weight:700; text-transform:uppercase; border:none; cursor:pointer; letter-spacing:0.5px; margin-top:6px; }
+        body.dark-theme .apply-btn { background:var(--acik-mavi); color:#020617; }
+        .apply-btn:hover { opacity:0.82; }
+
+        .career-apply { background:var(--card-bg); border:1px solid var(--border-gri); padding:45px; }
+        .career-apply h3 { font-size:22px; font-weight:800; margin-bottom:8px; color:var(--acik-mavi); }
+        body:not(.dark-theme) .career-apply h3 { color:var(--ana-lacivert); }
+        .career-apply .apply-sub { font-size:14px; color:#64748b; margin-bottom:30px; }
+        .form-row-2 { display:grid; grid-template-columns:1fr 1fr; gap:15px; }
+        .career-apply input, .career-apply select, .career-apply textarea { width:100%; padding:13px; border:1px solid var(--border-gri); background:var(--soft-gri); color:var(--text-main); font-size:14px; margin-bottom:15px; font-family:inherit; }
+        .career-apply textarea { height:120px; resize:none; }
+        .career-apply input[type="file"] { padding:10px; cursor:pointer; }
+        .file-note { font-size:11px; color:#94a3b8; margin-top:-10px; margin-bottom:15px; display:block; }
+
         /* İletişim & Simülatör Düzeni */
         .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
         .calculator-box { background: var(--card-bg); border: 2px solid var(--acik-mavi); padding: 30px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
@@ -724,15 +759,139 @@
 
     <!-- 7. SAYFA: KARİYER -->
     <div id="page-kariyer" class="page">
+
+        <div class="career-hero">
+            <h2 data-tr="GDA Group Ailesine Katılın" data-en="Join the GDA Group Family">GDA Group Ailesine Katılın</h2>
+            <p data-tr="Zemin mühendisliğinde fark yaratmak isteyenleri uluslararası projelerimizde birlikte çalışmaya davet ediyoruz. Sahadan ofise her kademede güçlü bir ekibin parçası olun." data-en="We invite those who want to make a difference in geotechnical engineering to work with us on our international projects. Be part of a strong team at every level from the field to the office.">Zemin mühendisliğinde fark yaratmak isteyenleri uluslararası projelerimizde birlikte çalışmaya davet ediyoruz. Sahadan ofise her kademede güçlü bir ekibin parçası olun.</p>
+        </div>
+
         <section>
             <div class="container">
-                <h2 class="section-title" data-tr="Kariyer Fırsatları" data-en="Career Opportunities">Kariyer Fırsatları</h2>
-                <div class="career-split">
-                    <div class="career-info">
-                        <h3 data-tr="GDA Group Yetenek Yönetimi" data-en="GDA Group Talent Management">GDA Group Yetenek Yönetimi</h3>
-                        <p data-tr="Uluslararası şantiyelerimizde görev alacak mühendisler arıyoruz." data-en="We are looking for engineers to take part in our international construction sites.">Uluslararası şantiyelerimizde görev alacak mühendisler arıyoruz.</p>
+
+                <!-- NEDEN GDA GROUP? -->
+                <h2 class="section-title" data-tr="Neden GDA Group?" data-en="Why GDA Group?">Neden GDA Group?</h2>
+                <p class="section-subtitle" data-tr="Çalışanlarımıza sunduğumuz değerler ve imkânlar." data-en="The values and opportunities we offer our employees.">Çalışanlarımıza sunduğumuz değerler ve imkânlar.</p>
+                <div class="benefit-grid">
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🌍</div>
+                        <h4 data-tr="Uluslararası Proje Deneyimi" data-en="International Project Experience">Uluslararası Proje Deneyimi</h4>
+                        <p data-tr="Yurt içi ve yurt dışı projelerde görev alarak küresel ölçekte mesleki deneyim kazanırsınız." data-en="You gain professional experience on a global scale by working on domestic and international projects.">Yurt içi ve yurt dışı projelerde görev alarak küresel ölçekte mesleki deneyim kazanırsınız.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">📈</div>
+                        <h4 data-tr="Kariyer Gelişimi" data-en="Career Development">Kariyer Gelişimi</h4>
+                        <p data-tr="Performansa dayalı terfi sistemi, teknik eğitimler ve mentörlük programlarıyla kariyer yolunuzu şekillendirin." data-en="Shape your career path with performance-based promotion, technical training and mentorship programs.">Performansa dayalı terfi sistemi, teknik eğitimler ve mentörlük programlarıyla kariyer yolunuzu şekillendirin.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">🛡️</div>
+                        <h4 data-tr="İş Güvencesi & Sosyal Haklar" data-en="Job Security & Benefits">İş Güvencesi & Sosyal Haklar</h4>
+                        <p data-tr="Sigorta, yemek, ulaşım ve SGK priminin eksiksiz ödenmesiyle güvenceli bir çalışma ortamı sunuyoruz." data-en="We provide a secure working environment with full payment of insurance, meals, transportation and SGK premiums.">Sigorta, yemek, ulaşım ve SGK priminin eksiksiz ödenmesiyle güvenceli bir çalışma ortamı sunuyoruz.</p>
+                    </div>
+                    <div class="benefit-card">
+                        <div class="benefit-icon">⚙️</div>
+                        <h4 data-tr="İleri Teknoloji Ekipmanlar" data-en="Advanced Technology Equipment">İleri Teknoloji Ekipmanlar</h4>
+                        <p data-tr="ICE, Giken ve Liebherr gibi dünya markalarının makinelerini kullanarak sektörün en güncel teknolojileriyle çalışırsınız." data-en="You work with the most up-to-date technologies in the industry using machines from world brands such as ICE, Giken and Liebherr.">ICE, Giken ve Liebherr gibi dünya markalarının makinelerini kullanarak sektörün en güncel teknolojileriyle çalışırsınız.</p>
                     </div>
                 </div>
+
+                <!-- AÇIK POZİSYONLAR -->
+                <h2 class="section-title" data-tr="Açık Pozisyonlar" data-en="Open Positions">Açık Pozisyonlar</h2>
+                <p class="section-subtitle" data-tr="Aşağıdaki pozisyonlar için nitelikli adayları bekliyoruz." data-en="We are looking for qualified candidates for the positions below.">Aşağıdaki pozisyonlar için nitelikli adayları bekliyoruz.</p>
+                <div class="positions-grid">
+                    <div class="position-card">
+                        <h4 data-tr="Saha İnşaat Mühendisi" data-en="Site Construction Engineer">Saha İnşaat Mühendisi</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">İnşaat Mühendisliği</span>
+                            <span class="pos-tag orange">Saha / Şantiye</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Palplanş çakım ve söküm operasyonlarının saha koordinasyonu, metraj takibi ve teknik raporlama. En az 2 yıl şantiye deneyimi aranmaktadır." data-en="Field coordination, quantity follow-up and technical reporting of sheet pile driving and extraction operations. Minimum 2 years site experience required.">Palplanş çakım ve söküm operasyonlarının saha koordinasyonu, metraj takibi ve teknik raporlama. En az 2 yıl şantiye deneyimi aranmaktadır.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                    <div class="position-card">
+                        <h4 data-tr="Zemin & Temel Mühendisi" data-en="Geotechnical & Foundation Engineer">Zemin & Temel Mühendisi</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">İnşaat / Jeoloji</span>
+                            <span class="pos-tag orange">Ofis + Saha</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Zemin etüdü değerlendirmesi, iksa sistemi tasarımı ve mühendislik hesapları. GGU, Plaxis veya benzeri yazılım bilgisi tercih sebebidir." data-en="Geotechnical survey evaluation, shoring system design and engineering calculations. Knowledge of GGU, Plaxis or similar software is preferred.">Zemin etüdü değerlendirmesi, iksa sistemi tasarımı ve mühendislik hesapları. GGU, Plaxis veya benzeri yazılım bilgisi tercih sebebidir.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                    <div class="position-card">
+                        <h4 data-tr="Proje & Şantiye Koordinatörü" data-en="Project & Site Coordinator">Proje & Şantiye Koordinatörü</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">Proje Yönetimi</span>
+                            <span class="pos-tag orange">Saha / Şantiye</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Birden fazla şantiyenin eş zamanlı koordinasyonu, iş planlaması, ekip yönetimi ve işveren raporlaması. Seyahat engeli olmayan adaylar tercih edilir." data-en="Simultaneous coordination of multiple sites, work planning, team management and employer reporting. Candidates with no travel restrictions preferred.">Birden fazla şantiyenin eş zamanlı koordinasyonu, iş planlaması, ekip yönetimi ve işveren raporlaması. Seyahat engeli olmayan adaylar tercih edilir.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                    <div class="position-card">
+                        <h4 data-tr="Makine Operatörü (Vibratör / Silent Piler)" data-en="Machine Operator (Vibro / Silent Piler)">Makine Operatörü (Vibratör / Silent Piler)</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">Makine & Ekipman</span>
+                            <span class="pos-tag orange">Saha / Şantiye</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Yüksek frekanslı vibratör ve sessiz piler sistemlerin operasyonu, bakım takibi ve güvenli çalışma protokollerine uyum. Operatör belgesi şartı aranmaktadır." data-en="Operation of high-frequency vibrator and silent piler systems, maintenance tracking and compliance with safe working protocols. Operator certificate required.">Yüksek frekanslı vibratör ve sessiz piler sistemlerin operasyonu, bakım takibi ve güvenli çalışma protokollerine uyum. Operatör belgesi şartı aranmaktadır.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                    <div class="position-card">
+                        <h4 data-tr="Harita & Topografya Teknikeri" data-en="Survey & Topography Technician">Harita & Topografya Teknikeri</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">Harita Mühendisliği</span>
+                            <span class="pos-tag orange">Saha + Ofis</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Şantiye aplikasyon ve ölçüm çalışmaları, as-built plan üretimi, GNSS/Total Station kullanımı. AutoCAD Civil 3D bilgisi tercih sebebidir." data-en="Site application and measurement works, as-built plan production, GNSS/Total Station usage. AutoCAD Civil 3D knowledge preferred.">Şantiye aplikasyon ve ölçüm çalışmaları, as-built plan üretimi, GNSS/Total Station kullanımı. AutoCAD Civil 3D bilgisi tercih sebebidir.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                    <div class="position-card">
+                        <h4 data-tr="Muhasebe & İdari İşler Uzmanı" data-en="Accounting & Administrative Affairs Specialist">Muhasebe & İdari İşler Uzmanı</h4>
+                        <div class="position-tags">
+                            <span class="pos-tag">Muhasebe / İdari</span>
+                            <span class="pos-tag orange">Ofis</span>
+                            <span class="pos-tag green">Tam Zamanlı</span>
+                        </div>
+                        <p data-tr="Hakediş hazırlama, cari hesap takibi, SGK ve vergi işlemleri, yazışma yönetimi. Logo veya Mikro muhasebe programı deneyimi aranmaktadır." data-en="Progress payment preparation, current account tracking, SGK and tax transactions, correspondence management. Logo or Mikro accounting program experience required.">Hakediş hazırlama, cari hesap takibi, SGK ve vergi işlemleri, yazışma yönetimi. Logo veya Mikro muhasebe programı deneyimi aranmaktadır.</p>
+                        <button class="apply-btn" onclick="document.getElementById('basvuru-form').scrollIntoView({behavior:'smooth'})" data-tr="Başvur" data-en="Apply">Başvur</button>
+                    </div>
+                </div>
+
+                <!-- BAŞVURU FORMU -->
+                <h2 class="section-title" data-tr="Başvuru Yap" data-en="Apply Now">Başvuru Yap</h2>
+                <p class="section-subtitle" data-tr="Aradığınız pozisyonu göremiyorsanız da başvurunuzu iletebilirsiniz — özgeçmişinizi değerlendireceğiz." data-en="If you don't see the position you are looking for, you can still submit your application — we will evaluate your CV.">Aradığınız pozisyonu göremiyorsanız da başvurunuzu iletebilirsiniz — özgeçmişinizi değerlendireceğiz.</p>
+                <div class="career-apply" id="basvuru-form">
+                    <h3 data-tr="Başvuru Formu" data-en="Application Form">Başvuru Formu</h3>
+                    <p class="apply-sub" data-tr="Formu doldurun, CV'nizi ekleyin — ekibimiz en kısa sürede sizinle iletişime geçecektir." data-en="Fill out the form, attach your CV — our team will contact you as soon as possible.">Formu doldurun, CV'nizi ekleyin — ekibimiz en kısa sürede sizinle iletişime geçecektir.</p>
+                    <form onsubmit="event.preventDefault(); alert('Başvurunuz alındı. En kısa sürede sizinle iletişime geçeceğiz.');">
+                        <div class="form-row-2">
+                            <input type="text" placeholder="Ad Soyad *" required>
+                            <input type="email" placeholder="E-posta Adresiniz *" required>
+                        </div>
+                        <div class="form-row-2">
+                            <input type="tel" placeholder="Telefon Numaranız">
+                            <select required>
+                                <option value="" disabled selected data-tr="Başvurduğunuz Pozisyon *" data-en="Position Applied For *">Başvurduğunuz Pozisyon *</option>
+                                <option data-tr="Saha İnşaat Mühendisi" data-en="Site Construction Engineer">Saha İnşaat Mühendisi</option>
+                                <option data-tr="Zemin & Temel Mühendisi" data-en="Geotechnical & Foundation Engineer">Zemin & Temel Mühendisi</option>
+                                <option data-tr="Proje & Şantiye Koordinatörü" data-en="Project & Site Coordinator">Proje & Şantiye Koordinatörü</option>
+                                <option data-tr="Makine Operatörü" data-en="Machine Operator">Makine Operatörü</option>
+                                <option data-tr="Harita & Topografya Teknikeri" data-en="Survey & Topography Technician">Harita & Topografya Teknikeri</option>
+                                <option data-tr="Muhasebe & İdari İşler Uzmanı" data-en="Accounting & Administrative Specialist">Muhasebe & İdari İşler Uzmanı</option>
+                                <option data-tr="Diğer / Genel Başvuru" data-en="Other / General Application">Diğer / Genel Başvuru</option>
+                            </select>
+                        </div>
+                        <input type="text" placeholder="Toplam İş Deneyimi (ör: 3 yıl)">
+                        <input type="file" accept=".pdf,.doc,.docx">
+                        <span class="file-note" data-tr="CV'nizi PDF veya Word formatında yükleyebilirsiniz (maks. 5 MB)" data-en="You can upload your CV in PDF or Word format (max 5 MB)">CV'nizi PDF veya Word formatında yükleyebilirsiniz (maks. 5 MB)</span>
+                        <textarea placeholder="Kendinizi kısaca tanıtın ve neden GDA Group'a katılmak istediğinizi belirtin..."></textarea>
+                        <button type="submit" class="submit-btn" data-tr="Başvuruyu Gönder" data-en="Submit Application">Başvuruyu Gönder</button>
+                    </form>
+                </div>
+
             </div>
         </section>
     </div>
