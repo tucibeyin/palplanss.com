@@ -255,6 +255,30 @@
         .job-position h4 { color: var(--text-main); font-size: 16px; margin-bottom: 5px; }
         .job-position p { font-size: 13px; color: #64748b; }
 
+        /* Makine Parkuru Sayfası */
+        .machine-banner { background: linear-gradient(rgba(7,25,49,0.88), rgba(11,37,69,0.95)), url('images/foto7.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
+        .machine-banner h2 { font-size:40px; font-weight:900; margin-bottom:18px; line-height:1.3; }
+        .machine-banner p { font-size:17px; color:#cbd5e1; max-width:700px; margin:0 auto; line-height:1.8; }
+
+        .fleet-stats { display:grid; grid-template-columns:repeat(4,1fr); background:var(--yardimci-mavi); }
+        .fleet-stat { padding:30px 20px; text-align:center; border-right:1px solid rgba(255,255,255,0.1); }
+        .fleet-stat:last-child { border-right:none; }
+        .fleet-stat h3 { font-size:36px; font-weight:900; color:var(--acik-mavi); margin-bottom:6px; }
+        .fleet-stat p { font-size:11px; font-weight:700; color:#cbd5e1; text-transform:uppercase; letter-spacing:0.8px; }
+
+        .machine-category { margin-bottom:70px; }
+        .machine-category-header { display:flex; align-items:center; gap:14px; margin-bottom:30px; padding-bottom:14px; border-bottom:2px solid var(--border-gri); }
+        .machine-category-header span { font-size:26px; }
+        .machine-category-header h3 { font-size:20px; font-weight:800; color:var(--text-main); text-transform:uppercase; letter-spacing:0.5px; }
+
+        .machine-spec-table { margin-top:12px; display:flex; flex-direction:column; gap:6px; }
+        .spec-row { display:flex; justify-content:space-between; font-size:12px; padding:5px 0; border-bottom:1px solid var(--border-gri); }
+        .spec-row:last-child { border-bottom:none; }
+        .spec-label { color:#94a3b8; font-weight:600; }
+        .spec-val { color:var(--text-main); font-weight:700; text-align:right; }
+
+        @media (max-width:768px) { .fleet-stats { grid-template-columns:1fr 1fr; } .fleet-stat { border-bottom:1px solid rgba(255,255,255,0.1); } }
+
         /* Belgeler & Kalite Sayfası */
         .quality-banner { background: linear-gradient(rgba(11,37,69,0.91), rgba(7,25,49,0.97)), url('images/foto5.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
         .quality-banner h2 { font-size:40px; font-weight:900; margin-bottom:18px; line-height:1.3; }
@@ -737,36 +761,205 @@
 
     <!-- 5. SAYFA: MAKİNE PARKURU -->
     <div id="page-makineler" class="page">
+
+        <div class="machine-banner">
+            <h2 data-tr="Özmal Ağır Makine Filomuz" data-en="Our Proprietary Heavy Machinery Fleet">Özmal Ağır Makine Filomuz</h2>
+            <p data-tr="Dünya markası ekipmanlardan oluşan envanterimiz, en zorlu zemin koşullarında bile kesintisiz ve yüksek performanslı operasyon sağlar." data-en="Our inventory of world-brand equipment ensures uninterrupted, high-performance operation even in the most challenging ground conditions.">Dünya markası ekipmanlardan oluşan envanterimiz, en zorlu zemin koşullarında bile kesintisiz ve yüksek performanslı operasyon sağlar.</p>
+        </div>
+
+        <!-- FİLO İSTATİSTİKLERİ -->
+        <div class="fleet-stats">
+            <div class="fleet-stat"><h3>20+</h3><p data-tr="Özmal Makine" data-en="Proprietary Machines">Özmal Makine</p></div>
+            <div class="fleet-stat"><h3>5</h3><p data-tr="Ekipman Kategorisi" data-en="Equipment Categories">Ekipman Kategorisi</p></div>
+            <div class="fleet-stat"><h3>3</h3><p data-tr="Dünya Markası" data-en="World Brands">Dünya Markası</p></div>
+            <div class="fleet-stat"><h3>7/24</h3><p data-tr="Teknik Destek" data-en="Technical Support">Teknik Destek</p></div>
+        </div>
+
         <section>
             <div class="container">
-                <h2 class="section-title" data-tr="Ağır Makine Parkurumuz" data-en="Heavy Machinery Fleet">Ağır Makine Parkurumuz</h2>
-                <p class="section-subtitle" data-tr="Tamamı envanterimize kayıtlı yüksek teknolojili özmal makine filomuz." data-en="Our high-tech proprietary machinery fleet entirely registered in our inventory.">Tamamı envanterimize kayıtlı yüksek teknolojili özmal makine filomuz.</p>
-                <div class="machine-grid">
-                    <div class="machine-card">
-                        <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto7.jpeg');"></div></div>
-                        <div class="machine-info">
-                            <h4>ICE Yüksek Frekanslı Vibratörler</h4>
-                            <p data-tr="Zemin yapısına minimum deformasyon, maksimum penetrasyon gücü." data-en="Minimum soil deformation, maximum penetration power.">Zemin yapısına minimum deformasyon, maksimum penetrasyon gücü.</p>
-                            <div class="machine-badge-row"><span class="machine-spec">ICE Global</span></div>
-                        </div>
+
+                <!-- KATEGORİ 1: ÇAKIM SİSTEMLERİ -->
+                <div class="machine-category">
+                    <div class="machine-category-header">
+                        <span>⚙️</span>
+                        <h3 data-tr="Palplanş Çakım Sistemleri" data-en="Sheet Pile Driving Systems">Palplanş Çakım Sistemleri</h3>
                     </div>
-                    <div class="machine-card">
-                        <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto8.jpeg');"></div></div>
-                        <div class="machine-info">
-                            <h4>Hidrolik Silent Piler Sistemleri</h4>
-                            <p data-tr="Titreşimsiz ve sessiz çakım için tam hidrolik baskılama teknolojisi." data-en="Full hydraulic pressing technology for vibration-free and silent piling.">Titreşimsiz ve sessiz çakım için tam hidrolik baskılama teknolojisi.</p>
-                            <div class="machine-badge-row"><span class="machine-spec">Giken</span></div>
+                    <div class="machine-grid">
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto7.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>ICE Yüksek Frekanslı Vibratörler</h4>
+                                    <p data-tr="Zemin yapısına minimum deformasyon uygulayarak maksimum penetrasyon gücüyle çelik palplanş çakımı. Kil, kum ve çakıllı zeminlerde yüksek verimle çalışır." data-en="Steel sheet pile driving with maximum penetration force applying minimum deformation to the soil structure. Works efficiently in clay, sand and gravelly soils.">Zemin yapısına minimum deformasyon uygulayarak maksimum penetrasyon gücüyle çelik palplanş çakımı. Kil, kum ve çakıllı zeminlerde yüksek verimle çalışır.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Marka</span><span class="spec-val">ICE (Netherlands)</span></div>
+                                        <div class="spec-row"><span class="spec-label">Frekans</span><span class="spec-val">23 – 43 Hz</span></div>
+                                        <div class="spec-row"><span class="spec-label">Eksentrik Moment</span><span class="spec-val">45 – 120 kNm</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kullanım Alanı</span><span class="spec-val">U / Z / Larssen Profil</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">ICE Global</span>
+                                    <span class="machine-spec">Vibrasyon</span>
+                                    <span class="machine-spec">Özmal</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="machine-card">
-                        <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto9.jpeg');"></div></div>
-                        <div class="machine-info">
-                            <h4>Ağır Paletli Krenler</h4>
-                            <p data-tr="Mega ağırlıklı yüklerin hassas konumlandırması için yüksek kapasiteli kren filomuz." data-en="High-capacity crane fleet for precise positioning of mega-weight loads.">Mega ağırlıklı yüklerin hassas konumlandırması için yüksek kapasiteli kren filomuz.</p>
-                            <div class="machine-badge-row"><span class="machine-spec">Liebherr</span></div>
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto8.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Giken Silent Piler — Sessiz Baskılama</h4>
+                                    <p data-tr="Titreşim ve gürültü oluşturmadan saf hidrolik kuvvetle palplanş çakımı. Kentsel alanlarda, hastane ve okul çevresinde, vibrasyon hassasiyeti yüksek yapılar yakınında ideal çözüm." data-en="Sheet pile driving with pure hydraulic force without generating vibration and noise. Ideal solution in urban areas, near hospitals and schools, near vibration-sensitive structures.">Titreşim ve gürültü oluşturmadan saf hidrolik kuvvetle palplanş çakımı. Kentsel alanlarda, hastane ve okul çevresinde, vibrasyon hassasiyeti yüksek yapılar yakınında ideal çözüm.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Marka</span><span class="spec-val">Giken (Japan)</span></div>
+                                        <div class="spec-row"><span class="spec-label">Çakım Kuvveti</span><span class="spec-val">600 – 1.200 kN</span></div>
+                                        <div class="spec-row"><span class="spec-label">Gürültü Seviyesi</span><span class="spec-val">&lt; 70 dB</span></div>
+                                        <div class="spec-row"><span class="spec-label">Titreşim</span><span class="spec-val">Sıfır (0 mm/s)</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Giken</span>
+                                    <span class="machine-spec">Sessiz</span>
+                                    <span class="machine-spec">Kentsel</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto1.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Hidrolik Çekiç Sistemleri</h4>
+                                    <p data-tr="Sert ve kompakt zeminlerde yüksek darbe enerjisiyle derin palplanş penetrasyonu. Vibratörün yetersiz kaldığı kaya ve sert kil formasyonlarında tercih edilen yöntem." data-en="Deep sheet pile penetration with high impact energy in hard and compact soils. Preferred method in rock and hard clay formations where vibrators are insufficient.">Sert ve kompakt zeminlerde yüksek darbe enerjisiyle derin palplanş penetrasyonu. Vibratörün yetersiz kaldığı kaya ve sert kil formasyonlarında tercih edilen yöntem.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Tip</span><span class="spec-val">Hidrolik Çekiç</span></div>
+                                        <div class="spec-row"><span class="spec-label">Çarpma Enerjisi</span><span class="spec-val">20 – 120 kJ</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kullanım Zemini</span><span class="spec-val">Sert Kil / Kaya</span></div>
+                                        <div class="spec-row"><span class="spec-label">Çalışma Derinliği</span><span class="spec-val">30 m'ye kadar</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Hidrolik</span>
+                                    <span class="machine-spec">Derin Çakım</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- KATEGORİ 2: KALDIRMA & TAŞIMA -->
+                <div class="machine-category">
+                    <div class="machine-category-header">
+                        <span>🏗️</span>
+                        <h3 data-tr="Kaldırma & Konumlandırma Ekipmanları" data-en="Lifting & Positioning Equipment">Kaldırma & Konumlandırma Ekipmanları</h3>
+                    </div>
+                    <div class="machine-grid">
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto9.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Liebherr Ağır Paletli Krenler</h4>
+                                    <p data-tr="Yüksek kapasiteli palplanş profillerin ve ağır ekipmanların hassas konumlandırılması için profesyonel kren filomuz. Deniz ve kara projelerinde eş zamanlı operasyon kabiliyeti." data-en="Our professional crane fleet for precise positioning of high-capacity sheet pile profiles and heavy equipment. Simultaneous operation capability in sea and land projects.">Yüksek kapasiteli palplanş profillerin ve ağır ekipmanların hassas konumlandırılması için profesyonel kren filomuz. Deniz ve kara projelerinde eş zamanlı operasyon kabiliyeti.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Marka</span><span class="spec-val">Liebherr (Germany)</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kaldırma Kapasitesi</span><span class="spec-val">50 – 250 ton</span></div>
+                                        <div class="spec-row"><span class="spec-label">Tip</span><span class="spec-val">Paletli (Crawler)</span></div>
+                                        <div class="spec-row"><span class="spec-label">Bom Uzunluğu</span><span class="spec-val">30 – 84 m</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Liebherr</span>
+                                    <span class="machine-spec">Ağır Kaldırma</span>
+                                    <span class="machine-spec">Özmal</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto2.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Mini Ekskavatörler — Dar Alan</h4>
+                                    <p data-tr="Şehir içi dar sokak ve bodrum kazılarında manevra kabiliyeti yüksek mini ekskavatör filomuz. Standart makinelerin giremediği dar ve kısıtlı alanlarda tam performanslı kazı imkânı." data-en="Our high-maneuverability mini excavator fleet for inner-city narrow street and basement excavations. Full-performance excavation in narrow and restricted areas where standard machines cannot access.">Şehir içi dar sokak ve bodrum kazılarında manevra kabiliyeti yüksek mini ekskavatör filomuz. Standart makinelerin giremediği dar ve kısıtlı alanlarda tam performanslı kazı imkânı.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Tip</span><span class="spec-val">Mini Ekskavatör</span></div>
+                                        <div class="spec-row"><span class="spec-label">Operasyon Genişliği</span><span class="spec-val">1,2 m'den itibaren</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kazı Derinliği</span><span class="spec-val">3 – 6 m</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kullanım Alanı</span><span class="spec-val">Dar Alan / Kentsel</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Dar Alan</span>
+                                    <span class="machine-spec">Kentsel Kazı</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KATEGORİ 3: DESTEK & YARDIMCI EKİPMANLAR -->
+                <div class="machine-category">
+                    <div class="machine-category-header">
+                        <span>🔧</span>
+                        <h3 data-tr="Destek & Yardımcı Ekipmanlar" data-en="Support & Auxiliary Equipment">Destek & Yardımcı Ekipmanlar</h3>
+                    </div>
+                    <div class="machine-grid">
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto3.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Sondaj & Zemin Etüt Ekipmanları</h4>
+                                    <p data-tr="Proje öncesi zemin sınıflandırması ve taşıma gücü tespiti için SPT, presiyometre ve zemin örnekleme donanımlı sondaj makineleri." data-en="Drilling machines equipped with SPT, pressuremeter and soil sampling for soil classification and bearing capacity determination before the project.">Proje öncesi zemin sınıflandırması ve taşıma gücü tespiti için SPT, presiyometre ve zemin örnekleme donanımlı sondaj makineleri.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Test Tipi</span><span class="spec-val">SPT / CPT / Presiyometre</span></div>
+                                        <div class="spec-row"><span class="spec-label">Max. Sondaj Derinliği</span><span class="spec-val">50 m</span></div>
+                                        <div class="spec-row"><span class="spec-label">Numune Çapı</span><span class="spec-val">Ø 50 – 150 mm</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Sondaj</span>
+                                    <span class="machine-spec">Zemin Etüdü</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto4.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Su Tahliye & Drenaj Sistemleri</h4>
+                                    <p data-tr="Derin kazı ve palplanş çalışmalarında yeraltı suyu kontrolü için yüksek kapasiteli dalgıç ve santrifüj pompa sistemleri. Well point ve derin kuyu yöntemleriyle etkin su tahliyesi." data-en="High-capacity submersible and centrifugal pump systems for groundwater control in deep excavation and sheet pile works. Effective dewatering with well point and deep well methods.">Derin kazı ve palplanş çalışmalarında yeraltı suyu kontrolü için yüksek kapasiteli dalgıç ve santrifüj pompa sistemleri. Well point ve derin kuyu yöntemleriyle etkin su tahliyesi.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Yöntem</span><span class="spec-val">Well Point / Derin Kuyu</span></div>
+                                        <div class="spec-row"><span class="spec-label">Pompa Kapasitesi</span><span class="spec-val">50 – 500 m³/h</span></div>
+                                        <div class="spec-row"><span class="spec-label">Kullanım</span><span class="spec-val">Yeraltı Suyu Kontrolü</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Drenaj</span>
+                                    <span class="machine-spec">Su Tahliye</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="machine-card">
+                            <div class="machine-img-wrapper"><div class="machine-img" style="background-image: url('images/foto5.jpeg');"></div></div>
+                            <div class="machine-info">
+                                <div>
+                                    <h4>Keson Kuyu Ekipmanları</h4>
+                                    <p data-tr="Büyük çaplı keson kuyu imalatında özel kalıp, vinç ve beton ekipmanları. Derin atık su, drenaj ve yeraltı yapılarının inşaatında güvenli ve hızlı uygulama imkânı." data-en="Special formwork, crane and concrete equipment for large-diameter caisson well construction. Safe and fast application opportunity in the construction of deep wastewater, drainage and underground structures.">Büyük çaplı keson kuyu imalatında özel kalıp, vinç ve beton ekipmanları. Derin atık su, drenaj ve yeraltı yapılarının inşaatında güvenli ve hızlı uygulama imkânı.</p>
+                                    <div class="machine-spec-table">
+                                        <div class="spec-row"><span class="spec-label">Kuyu Çapı</span><span class="spec-val">Ø 1,0 – 4,0 m</span></div>
+                                        <div class="spec-row"><span class="spec-label">Max. Derinlik</span><span class="spec-val">40 m</span></div>
+                                        <div class="spec-row"><span class="spec-label">Uygulama</span><span class="spec-val">Atıksu / Drenaj</span></div>
+                                    </div>
+                                </div>
+                                <div class="machine-badge-row" style="margin-top:16px;">
+                                    <span class="machine-spec">Keson</span>
+                                    <span class="machine-spec">Yeraltı Yapısı</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
