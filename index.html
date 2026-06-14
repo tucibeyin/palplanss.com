@@ -255,6 +255,41 @@
         .job-position h4 { color: var(--text-main); font-size: 16px; margin-bottom: 5px; }
         .job-position p { font-size: 13px; color: #64748b; }
 
+        /* Belgeler & Kalite Sayfası */
+        .quality-banner { background: linear-gradient(rgba(11,37,69,0.91), rgba(7,25,49,0.97)), url('images/foto5.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
+        .quality-banner h2 { font-size:40px; font-weight:900; margin-bottom:18px; line-height:1.3; }
+        .quality-banner p { font-size:17px; color:#cbd5e1; max-width:700px; margin:0 auto; line-height:1.8; }
+
+        .cert-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; margin-bottom:80px; }
+        .cert-card { background:var(--card-bg); border:1px solid var(--border-gri); padding:32px 28px; display:flex; flex-direction:column; gap:14px; position:relative; overflow:hidden; }
+        .cert-card::before { content:''; position:absolute; top:0; left:0; width:4px; height:100%; background: linear-gradient(180deg, var(--yardimci-mavi), var(--acik-mavi)); }
+        .cert-icon { font-size:36px; }
+        .cert-card h4 { font-size:17px; font-weight:800; color:var(--text-main); }
+        .cert-card p { font-size:13px; color:#64748b; line-height:1.7; flex-grow:1; }
+        .cert-status { display:inline-flex; align-items:center; gap:6px; background:rgba(16,185,129,0.1); color:#059669; padding:5px 12px; font-size:11px; font-weight:700; align-self:flex-start; }
+        .cert-status::before { content:'●'; font-size:8px; }
+
+        .quality-policy-box { background: var(--ana-lacivert); color:#fff; padding:50px; border-left:5px solid var(--acik-mavi); margin-bottom:80px; }
+        body.dark-theme .quality-policy-box { background: var(--yardimci-mavi); }
+        .quality-policy-box h3 { font-size:22px; font-weight:800; color:var(--acik-mavi); margin-bottom:20px; text-transform:uppercase; letter-spacing:0.5px; }
+        .quality-policy-box p { font-size:15px; line-height:2; color:#cbd5e1; margin-bottom:15px; }
+        .quality-policy-box p:last-child { margin-bottom:0; }
+
+        .quality-steps { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:0; margin-bottom:80px; }
+        .quality-step { background:var(--card-bg); border:1px solid var(--border-gri); padding:32px 24px; text-align:center; position:relative; }
+        .quality-step:not(:last-child)::after { content:'→'; position:absolute; right:-18px; top:50%; transform:translateY(-50%); font-size:22px; color:var(--acik-mavi); z-index:1; }
+        .step-num { width:48px; height:48px; border-radius:50%; background: linear-gradient(135deg, var(--yardimci-mavi), var(--acik-mavi)); color:#fff; font-size:18px; font-weight:900; display:flex; align-items:center; justify-content:center; margin:0 auto 16px auto; }
+        .quality-step h5 { font-size:14px; font-weight:700; color:var(--text-main); margin-bottom:8px; }
+        .quality-step p { font-size:12px; color:#64748b; line-height:1.6; }
+
+        .isg-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:20px; }
+        .isg-item { display:flex; gap:16px; align-items:flex-start; background:var(--soft-gri); border:1px solid var(--border-gri); padding:24px; }
+        .isg-ico { font-size:28px; flex-shrink:0; }
+        .isg-item h5 { font-size:14px; font-weight:700; color:var(--text-main); margin-bottom:6px; }
+        .isg-item p { font-size:13px; color:#64748b; line-height:1.6; }
+
+        @media (max-width:768px) { .quality-steps { grid-template-columns:1fr 1fr; } .quality-step::after { display:none; } }
+
         /* Kariyer Sayfası */
         .career-hero { background: linear-gradient(rgba(11,37,69,0.91), rgba(7,25,49,0.97)), url('images/foto8.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
         .career-hero h2 { font-size:40px; font-weight:900; margin-bottom:18px; line-height:1.3; }
@@ -738,21 +773,139 @@
 
     <!-- 6. SAYFA: BELGELER & KALİTE -->
     <div id="page-belgeler" class="page">
+
+        <div class="quality-banner">
+            <h2 data-tr="Kalite & Güvenlik Taahhüdümüz" data-en="Our Quality & Safety Commitment">Kalite & Güvenlik Taahhüdümüz</h2>
+            <p data-tr="Uluslararası standartlara tam uyum, sıfır kaza hedefi ve sürdürülebilir mühendislik anlayışıyla her projede en yüksek kaliteyi sunuyoruz." data-en="We deliver the highest quality in every project with full compliance to international standards, zero accident target and sustainable engineering approach.">Uluslararası standartlara tam uyum, sıfır kaza hedefi ve sürdürülebilir mühendislik anlayışıyla her projede en yüksek kaliteyi sunuyoruz.</p>
+        </div>
+
         <section>
             <div class="container">
-                <h2 class="section-title" data-tr="Uluslararası Belgelerimiz" data-en="International Certificates">Uluslararası Belgelerimiz</h2>
-                <div class="docs-grid">
-                    <div class="doc-card">
-                        <div class="doc-icon">📜</div>
+
+                <!-- SERTİFİKALAR -->
+                <h2 class="section-title" data-tr="Sertifika & Belgelerimiz" data-en="Our Certificates & Documents">Sertifika & Belgelerimiz</h2>
+                <p class="section-subtitle" data-tr="Ulusal ve uluslararası akreditasyon kuruluşları tarafından onaylanmış yönetim sistemi belgelerimiz." data-en="Our management system certificates approved by national and international accreditation bodies.">Ulusal ve uluslararası akreditasyon kuruluşları tarafından onaylanmış yönetim sistemi belgelerimiz.</p>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <div class="cert-icon">📋</div>
                         <h4>ISO 9001:2015</h4>
-                        <p data-tr="Global Kalite Yönetim Sistemi" data-en="Global Quality Management">Global Kalite Yönetim Sistemi</p>
+                        <p data-tr="Kalite Yönetim Sistemi. Proje tasarımından saha uygulamasına tüm süreçlerde standart kalite güvencesi sağlar; müşteri memnuniyetini ve sürekli iyileştirmeyi esas alır." data-en="Quality Management System. Ensures standard quality assurance across all processes from project design to site implementation; prioritizes customer satisfaction and continuous improvement.">Kalite Yönetim Sistemi. Proje tasarımından saha uygulamasına tüm süreçlerde standart kalite güvencesi sağlar; müşteri memnuniyetini ve sürekli iyileştirmeyi esas alır.</p>
+                        <span class="cert-status" data-tr="Aktif & Geçerli" data-en="Active & Valid">Aktif & Geçerli</span>
                     </div>
-                    <div class="doc-card">
-                        <div class="doc-icon">🛡️</div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🦺</div>
                         <h4>ISO 45001:2018</h4>
-                        <p data-tr="Uluslararası İş Sağlığı Güvenliği" data-en="International Occupational Health">Uluslararası İş Sağlığı Güvenliği</p>
+                        <p data-tr="İş Sağlığı ve Güvenliği Yönetim Sistemi. Şantiye ve ofis ortamlarında çalışan sağlığı ile iş güvenliğinin sistematik olarak yönetilmesini sağlar." data-en="Occupational Health and Safety Management System. Ensures systematic management of employee health and occupational safety in site and office environments.">İş Sağlığı ve Güvenliği Yönetim Sistemi. Şantiye ve ofis ortamlarında çalışan sağlığı ile iş güvenliğinin sistematik olarak yönetilmesini sağlar.</p>
+                        <span class="cert-status" data-tr="Aktif & Geçerli" data-en="Active & Valid">Aktif & Geçerli</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🌱</div>
+                        <h4>ISO 14001:2015</h4>
+                        <p data-tr="Çevre Yönetim Sistemi. Proje alanlarında çevresel etkilerin kontrol altında tutulması, atık yönetimi ve doğal kaynakların korunmasına yönelik sistematik yaklaşım." data-en="Environmental Management System. Systematic approach to keeping environmental impacts under control at project sites, waste management and protection of natural resources.">Çevre Yönetim Sistemi. Proje alanlarında çevresel etkilerin kontrol altında tutulması, atık yönetimi ve doğal kaynakların korunmasına yönelik sistematik yaklaşım.</p>
+                        <span class="cert-status" data-tr="Aktif & Geçerli" data-en="Active & Valid">Aktif & Geçerli</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🏗️</div>
+                        <h4>TSE & CE Belgesi</h4>
+                        <p data-tr="Türk Standartları Enstitüsü ve Avrupa Birliği CE işaretlendirme uygunluğu. Kullandığımız yapı malzemeleri ve ekipmanların ulusal ve AB standartlarına tam uyumunu belgeler." data-en="Turkish Standards Institution and European Union CE marking conformity. Documents full compliance of construction materials and equipment used with national and EU standards.">Türk Standartları Enstitüsü ve Avrupa Birliği CE işaretlendirme uygunluğu. Kullandığımız yapı malzemeleri ve ekipmanların ulusal ve AB standartlarına tam uyumunu belgeler.</p>
+                        <span class="cert-status" data-tr="Aktif & Geçerli" data-en="Active & Valid">Aktif & Geçerli</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">📊</div>
+                        <h4>FIDIC Sözleşme Uyumu</h4>
+                        <p data-tr="Uluslararası Mühendislik ve Danışmanlık Kuruluşları Federasyonu standartlarına uygun sözleşme ve proje yönetimi altyapısı. Kamu ve uluslararası ihaleler için zorunlu yetkinlik." data-en="Contract and project management infrastructure compliant with the standards of the International Federation of Engineering and Consulting. Required competency for public and international tenders.">Uluslararası Mühendislik ve Danışmanlık Kuruluşları Federasyonu standartlarına uygun sözleşme ve proje yönetimi altyapısı. Kamu ve uluslararası ihaleler için zorunlu yetkinlik.</p>
+                        <span class="cert-status" data-tr="Uyumlu" data-en="Compliant">Uyumlu</span>
+                    </div>
+                    <div class="cert-card">
+                        <div class="cert-icon">🔒</div>
+                        <h4>İSG Eğitim Sertifikaları</h4>
+                        <p data-tr="Tüm saha personelinin zorunlu İş Güvenliği eğitimlerini tamamladığını belgeleyen bireysel sertifika sistemi. Yıllık yenileme ve saha denetimleriyle sürekli güncel tutulur." data-en="Individual certificate system documenting that all field personnel have completed mandatory Occupational Safety training. Continuously updated with annual renewals and site audits.">Tüm saha personelinin zorunlu İş Güvenliği eğitimlerini tamamladığını belgeleyen bireysel sertifika sistemi. Yıllık yenileme ve saha denetimleriyle sürekli güncel tutulur.</p>
+                        <span class="cert-status" data-tr="Aktif & Geçerli" data-en="Active & Valid">Aktif & Geçerli</span>
                     </div>
                 </div>
+
+                <!-- KALİTE POLİTİKASI -->
+                <h2 class="section-title" data-tr="Kalite Politikamız" data-en="Our Quality Policy">Kalite Politikamız</h2>
+                <div class="quality-policy-box">
+                    <h3 data-tr="ANK Mühendislik Kalite Beyanı" data-en="ANK Mühendislik Quality Statement">ANK Mühendislik Kalite Beyanı</h3>
+                    <p data-tr="ANK Mühendislik olarak; zemin mühendisliği, derin kazı iksa sistemleri ve çelik palplanş uygulamalarında müşterilerimize sunduğumuz her hizmette ulusal ve uluslararası kalite standartlarına eksiksiz uymayı, bu standartların ötesine geçmeyi taahhüt ediyoruz." data-en="As ANK Mühendislik, we commit to fully complying with and exceeding national and international quality standards in every service we provide to our customers in geotechnical engineering, deep excavation shoring systems and steel sheet piling applications.">ANK Mühendislik olarak; zemin mühendisliği, derin kazı iksa sistemleri ve çelik palplanş uygulamalarında müşterilerimize sunduğumuz her hizmette ulusal ve uluslararası kalite standartlarına eksiksiz uymayı, bu standartların ötesine geçmeyi taahhüt ediyoruz.</p>
+                    <p data-tr="Kalite yönetim sistemimizi sürekli iyileştirme prensibiyle işletmek, çalışanlarımızın mesleki gelişimini desteklemek, çevre ve iş güvenliğini her koşulda ön planda tutmak ve müşteri memnuniyetini temel performans göstergesi olarak benimsemek şirketimizin değişmez ilkeleridir." data-en="Operating our quality management system with the principle of continuous improvement, supporting the professional development of our employees, prioritizing environment and occupational safety under all conditions, and adopting customer satisfaction as the basic performance indicator are the unchanging principles of our company.">Kalite yönetim sistemimizi sürekli iyileştirme prensibiyle işletmek, çalışanlarımızın mesleki gelişimini desteklemek, çevre ve iş güvenliğini her koşulda ön planda tutmak ve müşteri memnuniyetini temel performans göstergesi olarak benimsemek şirketimizin değişmez ilkeleridir.</p>
+                </div>
+
+                <!-- KALİTE SÜRECİ -->
+                <h2 class="section-title" data-tr="Kalite Sürecimiz" data-en="Our Quality Process">Kalite Sürecimiz</h2>
+                <p class="section-subtitle" data-tr="Her projede uyguladığımız dört aşamalı kalite döngüsü." data-en="The four-stage quality cycle we apply in every project.">Her projede uyguladığımız dört aşamalı kalite döngüsü.</p>
+                <div class="quality-steps">
+                    <div class="quality-step">
+                        <div class="step-num">1</div>
+                        <h5 data-tr="Planla" data-en="Plan">Planla</h5>
+                        <p data-tr="Zemin etüdü, mühendislik hesapları ve proje planlamasıyla sağlam bir temel oluşturulur." data-en="A solid foundation is established with geotechnical survey, engineering calculations and project planning.">Zemin etüdü, mühendislik hesapları ve proje planlamasıyla sağlam bir temel oluşturulur.</p>
+                    </div>
+                    <div class="quality-step">
+                        <div class="step-num">2</div>
+                        <h5 data-tr="Uygula" data-en="Do">Uygula</h5>
+                        <p data-tr="Sertifikalı ekip ve yüksek teknoloji ekipmanlarla saha uygulaması standartlara uygun yürütülür." data-en="Field implementation is carried out in accordance with standards by a certified team and high-tech equipment.">Sertifikalı ekip ve yüksek teknoloji ekipmanlarla saha uygulaması standartlara uygun yürütülür.</p>
+                    </div>
+                    <div class="quality-step">
+                        <div class="step-num">3</div>
+                        <h5 data-tr="Kontrol Et" data-en="Check">Kontrol Et</h5>
+                        <p data-tr="Günlük saha denetimleri, ölçüm ve raporlama sistemiyle kalite sapmaları anında tespit edilir." data-en="Quality deviations are immediately detected with daily site inspections, measurement and reporting systems.">Günlük saha denetimleri, ölçüm ve raporlama sistemiyle kalite sapmaları anında tespit edilir.</p>
+                    </div>
+                    <div class="quality-step">
+                        <div class="step-num">4</div>
+                        <h5 data-tr="İyileştir" data-en="Act">İyileştir</h5>
+                        <p data-tr="Proje sonrası değerlendirmeler ve müşteri geri bildirimleriyle süreçler düzenli olarak güncellenir." data-en="Processes are regularly updated with post-project evaluations and customer feedback.">Proje sonrası değerlendirmeler ve müşteri geri bildirimleriyle süreçler düzenli olarak güncellenir.</p>
+                    </div>
+                </div>
+
+                <!-- İSG TAAHHÜDÜ -->
+                <h2 class="section-title" data-tr="İş Sağlığı & Güvenliği Taahhüdümüz" data-en="Our OHS Commitment">İş Sağlığı & Güvenliği Taahhüdümüz</h2>
+                <p class="section-subtitle" data-tr="Sıfır kaza hedefiyle yürüttüğümüz İSG uygulamaları." data-en="Our OHS practices carried out with the zero accident target.">Sıfır kaza hedefiyle yürüttüğümüz İSG uygulamaları.</p>
+                <div class="isg-grid">
+                    <div class="isg-item">
+                        <span class="isg-ico">🪖</span>
+                        <div>
+                            <h5 data-tr="Zorunlu KKD Kullanımı" data-en="Mandatory PPE Use">Zorunlu KKD Kullanımı</h5>
+                            <p data-tr="Şantiyeye girişten çıkışa kadar kişisel koruyucu donanım kullanımı zorunludur; baret, iş ayakkabısı, yelek ve gözlük standarttır." data-en="Use of personal protective equipment is mandatory from site entry to exit; hard hat, work boots, vest and goggles are standard.">Şantiyeye girişten çıkışa kadar kişisel koruyucu donanım kullanımı zorunludur; baret, iş ayakkabısı, yelek ve gözlük standarttır.</p>
+                        </div>
+                    </div>
+                    <div class="isg-item">
+                        <span class="isg-ico">📋</span>
+                        <div>
+                            <h5 data-tr="Risk Değerlendirmesi" data-en="Risk Assessment">Risk Değerlendirmesi</h5>
+                            <p data-tr="Her proje başlangıcında kapsamlı risk değerlendirmesi yapılır; tehlike sınıflarına göre önleyici tedbirler belirlenir ve kayıt altına alınır." data-en="A comprehensive risk assessment is carried out at the start of each project; preventive measures are identified and recorded according to hazard classes.">Her proje başlangıcında kapsamlı risk değerlendirmesi yapılır; tehlike sınıflarına göre önleyici tedbirler belirlenir ve kayıt altına alınır.</p>
+                        </div>
+                    </div>
+                    <div class="isg-item">
+                        <span class="isg-ico">🎓</span>
+                        <div>
+                            <h5 data-tr="Düzenli İSG Eğitimleri" data-en="Regular OHS Trainings">Düzenli İSG Eğitimleri</h5>
+                            <p data-tr="Tüm çalışanlar yıllık İSG eğitimlerine katılır; yeni başlayan personele işe başlamadan önce zorunlu oryantasyon eğitimi verilir." data-en="All employees attend annual OHS trainings; mandatory orientation training is provided to new personnel before they start work.">Tüm çalışanlar yıllık İSG eğitimlerine katılır; yeni başlayan personele işe başlamadan önce zorunlu oryantasyon eğitimi verilir.</p>
+                        </div>
+                    </div>
+                    <div class="isg-item">
+                        <span class="isg-ico">🔍</span>
+                        <div>
+                            <h5 data-tr="Saha Denetimleri" data-en="Site Inspections">Saha Denetimleri</h5>
+                            <p data-tr="İSG uzmanları tarafından haftalık planlı ve anlık denetimleri gerçekleştirilir; bulgular raporlanarak gerekli aksiyonlar derhal alınır." data-en="Weekly planned and instant inspections are carried out by OHS specialists; findings are reported and necessary actions are taken immediately.">İSG uzmanları tarafından haftalık planlı ve anlık denetimleri gerçekleştirilir; bulgular raporlanarak gerekli aksiyonlar derhal alınır.</p>
+                        </div>
+                    </div>
+                    <div class="isg-item">
+                        <span class="isg-ico">🚨</span>
+                        <div>
+                            <h5 data-tr="Acil Durum Prosedürleri" data-en="Emergency Procedures">Acil Durum Prosedürleri</h5>
+                            <p data-tr="Her şantiyede güncel acil durum planı bulunur; tahliye noktaları, toplanma alanları ve ilk yardım ekipleri önceden belirlenir." data-en="Each site has an up-to-date emergency plan; evacuation points, assembly areas and first aid teams are determined in advance.">Her şantiyede güncel acil durum planı bulunur; tahliye noktaları, toplanma alanları ve ilk yardım ekipleri önceden belirlenir.</p>
+                        </div>
+                    </div>
+                    <div class="isg-item">
+                        <span class="isg-ico">♻️</span>
+                        <div>
+                            <h5 data-tr="Çevre Yönetimi" data-en="Environmental Management">Çevre Yönetimi</h5>
+                            <p data-tr="Şantiye atıkları sınıflandırılarak bertaraf edilir; gürültü, toz ve toprak kirliliği önlemleri çevre mevzuatı kapsamında uygulanır." data-en="Site waste is classified and disposed of; noise, dust and soil pollution measures are implemented within the scope of environmental legislation.">Şantiye atıkları sınıflandırılarak bertaraf edilir; gürültü, toz ve toprak kirliliği önlemleri çevre mevzuatı kapsamında uygulanır.</p>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
     </div>
