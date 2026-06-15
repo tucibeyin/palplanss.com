@@ -256,21 +256,23 @@
         .job-position p { font-size: 13px; color: #64748b; }
 
         /* Anasayfa Hesaplayıcı Şeridi */
-        .home-calc-strip { background: var(--soft-gri); border-top: 3px solid var(--acik-mavi); border-bottom: 1px solid var(--border-gri); padding: 36px 20px; }
-        body.dark-theme .home-calc-strip { background: var(--yardimci-mavi); }
-        .home-calc-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
-        .home-calc-title { flex: 0 0 auto; }
-        .home-calc-title h3 { font-size: 15px; font-weight: 800; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 4px; }
-        .home-calc-title p { font-size: 12px; color: #64748b; }
-        .home-calc-fields { display: flex; gap: 12px; flex-wrap: wrap; flex: 1; }
-        .home-calc-group { display: flex; flex-direction: column; gap: 5px; flex: 1; min-width: 130px; }
-        .home-calc-group label { font-size: 11px; font-weight: 700; color: #64748b; text-transform: uppercase; }
-        .home-calc-group input, .home-calc-group select { padding: 10px 12px; border: 1px solid var(--border-gri); background: var(--card-bg); color: var(--text-main); font-size: 13px; font-family: inherit; }
-        .home-calc-btn { background: var(--ana-lacivert); color: #fff; padding: 10px 22px; border: none; font-weight: 700; font-size: 12px; text-transform: uppercase; cursor: pointer; white-space: nowrap; height: 40px; align-self: flex-end; letter-spacing: 0.5px; flex-shrink: 0; }
-        body.dark-theme .home-calc-btn { background: var(--acik-mavi); color: #020617; }
-        .home-calc-btn:hover { opacity: 0.85; }
-        .home-calc-result { display: flex; align-items: center; background: var(--card-bg); border: 1px solid var(--acik-mavi); padding: 10px 18px; font-size: 14px; font-weight: 700; color: var(--text-main); white-space: nowrap; flex-shrink: 0; min-width: 200px; }
-        @media (max-width: 768px) { .home-calc-inner { flex-direction: column; align-items: stretch; } .home-calc-result { min-width: unset; } }
+        .home-calc-strip { background: var(--ana-lacivert); border-top: 4px solid var(--acik-mavi); padding: 40px 20px; }
+        .home-calc-inner { max-width: 1200px; margin: 0 auto; }
+        .home-calc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
+        .home-calc-header h3 { font-size: 20px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
+        .home-calc-header p { font-size: 13px; color: #94a3b8; margin-top: 3px; }
+        .home-calc-icon { font-size: 32px; }
+        .home-calc-body { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
+        .home-calc-fields { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; }
+        .home-calc-group { display: flex; flex-direction: column; gap: 7px; flex: 1; min-width: 150px; }
+        .home-calc-group label { font-size: 11px; font-weight: 700; color: var(--acik-mavi); text-transform: uppercase; letter-spacing: 0.5px; }
+        .home-calc-group input, .home-calc-group select { padding: 12px 14px; border: 1px solid rgba(141,169,196,0.3); background: rgba(255,255,255,0.07); color: #fff; font-size: 14px; font-family: inherit; }
+        .home-calc-group input::placeholder { color: #94a3b8; }
+        .home-calc-group select option { background: var(--ana-lacivert); color: #fff; }
+        .home-calc-btn { background: var(--acik-mavi); color: #0B2545; padding: 13px 32px; border: none; font-weight: 900; font-size: 13px; text-transform: uppercase; cursor: pointer; white-space: nowrap; align-self: flex-end; letter-spacing: 0.8px; flex-shrink: 0; transition: background 0.2s; }
+        .home-calc-btn:hover { background: #fff; color: var(--ana-lacivert); }
+        .home-calc-result { display: flex; align-items: center; gap: 10px; background: rgba(141,169,196,0.12); border: 1px solid var(--acik-mavi); border-left: 4px solid var(--acik-mavi); padding: 13px 20px; font-size: 18px; font-weight: 900; color: var(--acik-mavi); white-space: nowrap; flex-shrink: 0; align-self: flex-end; }
+        @media (max-width: 900px) { .home-calc-body { flex-direction: column; align-items: stretch; } .home-calc-result { font-size: 16px; } }
 
         /* Makine Parkuru Sayfası */
         .machine-banner { background: linear-gradient(rgba(7,25,49,0.88), rgba(11,37,69,0.95)), url('images/foto7.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
@@ -435,7 +437,7 @@
                 <button id="nav-projeler" onclick="showPage('projeler')" data-tr="Projelerimiz" data-en="Projects">Projelerimiz</button>
                 <button id="nav-referanslar" onclick="showPage('referanslar')" data-tr="Referanslarımız" data-en="References">Referanslarımız</button>
                 <button id="nav-makineler" onclick="showPage('makineler')" data-tr="Makine Parkuru" data-en="Fleet">Makine Parkuru</button>
-                <button id="nav-belgeler" onclick="showPage('belgeler')" data-tr="Belgeler & Kalite" data-en="Quality">Belgeler & Kalite</button>
+                <button id="nav-belgeler" onclick="showPage('belgeler')" data-tr="Belgelerimiz" data-en="Documents">Belgelerimiz</button>
                 <button id="nav-kariyer" onclick="showPage('kariyer')" data-tr="Kariyer" data-en="Careers">Kariyer</button>
                 <button id="nav-iletisim" onclick="showPage('iletisim')" data-tr="İletişim" data-en="Contact">İletişim</button>
             </nav>
@@ -457,30 +459,35 @@
         <!-- ANASAYFA HESAPLAYICI ŞERİDİ -->
         <div class="home-calc-strip">
             <div class="home-calc-inner">
-                <div class="home-calc-title">
-                    <h3 data-tr="⚙️ Tonaj Hesaplayıcı" data-en="⚙️ Tonnage Calculator">⚙️ Tonaj Hesaplayıcı</h3>
-                    <p data-tr="Hızlı palplanş çelik tahmini" data-en="Quick sheet pile steel estimate">Hızlı palplanş çelik tahmini</p>
-                </div>
-                <div class="home-calc-fields">
-                    <div class="home-calc-group">
-                        <label data-tr="Hat Uzunluğu (m)" data-en="Line Length (m)">Hat Uzunluğu (m)</label>
-                        <input type="number" id="hc-length" value="100" min="1">
-                    </div>
-                    <div class="home-calc-group">
-                        <label data-tr="Profil Tipi" data-en="Profile Type">Profil Tipi</label>
-                        <select id="hc-type">
-                            <option value="75">Hafif / Orta (GU 16-22) ~75 kg/m²</option>
-                            <option value="120">Ağır (Larssen / PU 28) ~120 kg/m²</option>
-                            <option value="160">Ekstra Ağır / Deniz ~160 kg/m²</option>
-                        </select>
-                    </div>
-                    <div class="home-calc-group">
-                        <label data-tr="Çakım Derinliği (m)" data-en="Driving Depth (m)">Çakım Derinliği (m)</label>
-                        <input type="number" id="hc-depth" value="12" min="1">
+                <div class="home-calc-header">
+                    <span class="home-calc-icon">⚙️</span>
+                    <div>
+                        <h3 data-tr="Palplanş Tonaj Hesaplayıcı" data-en="Sheet Pile Tonnage Calculator">Palplanş Tonaj Hesaplayıcı</h3>
+                        <p data-tr="Proje parametrelerinizi girin, anlık çelik tonajı tahmini alın" data-en="Enter your project parameters and get an instant steel tonnage estimate">Proje parametrelerinizi girin, anlık çelik tonajı tahmini alın</p>
                     </div>
                 </div>
-                <button class="home-calc-btn" onclick="calcHome()" data-tr="Hesapla" data-en="Calculate">Hesapla</button>
-                <div class="home-calc-result" id="hc-result" data-tr="Tahmini: -- Ton" data-en="Estimate: -- Tons">Tahmini: -- Ton</div>
+                <div class="home-calc-body">
+                    <div class="home-calc-fields">
+                        <div class="home-calc-group">
+                            <label data-tr="Hat Uzunluğu (m)" data-en="Line Length (m)">Hat Uzunluğu (m)</label>
+                            <input type="number" id="hc-length" value="100" min="1">
+                        </div>
+                        <div class="home-calc-group">
+                            <label data-tr="Profil Tipi" data-en="Profile Type">Profil Tipi</label>
+                            <select id="hc-type">
+                                <option value="75">Hafif / Orta — GU 16-22 (~75 kg/m²)</option>
+                                <option value="120">Ağır — Larssen / PU 28 (~120 kg/m²)</option>
+                                <option value="160">Ekstra Ağır / Deniz (~160 kg/m²)</option>
+                            </select>
+                        </div>
+                        <div class="home-calc-group">
+                            <label data-tr="Çakım Derinliği (m)" data-en="Driving Depth (m)">Çakım Derinliği (m)</label>
+                            <input type="number" id="hc-depth" value="12" min="1">
+                        </div>
+                    </div>
+                    <button class="home-calc-btn" onclick="calcHome()" data-tr="Hesapla" data-en="Calculate">Hesapla</button>
+                    <div class="home-calc-result" id="hc-result">📦 Tahmini: <span style="margin-left:8px;">-- Ton</span></div>
+                </div>
             </div>
         </div>
 
@@ -1548,7 +1555,9 @@
             if (isNaN(length) || isNaN(depth)) return;
             const tonnage = ((length * depth * weight) / 1000).toFixed(1);
             const el = document.getElementById('hc-result');
-            el.innerText = currentLang === 'TR' ? `Tahmini: ${tonnage} Ton` : `Estimate: ${tonnage} Tons`;
+            el.innerHTML = currentLang === 'TR'
+                ? `📦 Tahmini: <span style="margin-left:8px;">${tonnage} Ton</span>`
+                : `📦 Estimate: <span style="margin-left:8px;">${tonnage} Tons</span>`;
         }
 
         // 4. Mühendislik Palplanş Tonaj Hesaplama Algoritması
