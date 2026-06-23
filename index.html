@@ -267,23 +267,23 @@
         .job-position p { font-size: 13px; color: #64748b; }
 
         /* Anasayfa Hesaplayıcı Şeridi */
-        .home-calc-strip { background: var(--ana-lacivert); border-top: 4px solid var(--acik-mavi); padding: 40px 20px; }
+        .home-calc-strip { background: linear-gradient(135deg, #071931 0%, var(--ana-lacivert) 100%); border-top: 4px solid var(--acik-mavi); border-bottom: 1px solid rgba(56,189,248,0.15); padding: 48px 20px; }
         .home-calc-inner { max-width: 1200px; margin: 0 auto; }
-        .home-calc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 28px; }
-        .home-calc-header h3 { font-size: 20px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1px; }
-        .home-calc-header p { font-size: 13px; color: #94a3b8; margin-top: 3px; }
-        .home-calc-icon { font-size: 32px; }
-        .home-calc-body { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; }
-        .home-calc-fields { display: flex; gap: 14px; flex-wrap: wrap; flex: 1; }
-        .home-calc-group { display: flex; flex-direction: column; gap: 7px; flex: 1; min-width: 150px; }
-        .home-calc-group label { font-size: 11px; font-weight: 700; color: var(--acik-mavi); text-transform: uppercase; letter-spacing: 0.5px; }
-        .home-calc-group input, .home-calc-group select { padding: 12px 14px; border: 1px solid rgba(141,169,196,0.3); background: rgba(255,255,255,0.07); color: #fff; font-size: 14px; font-family: inherit; }
+        .home-calc-header { display: flex; align-items: center; gap: 16px; margin-bottom: 32px; }
+        .home-calc-header h3 { font-size: 22px; font-weight: 900; color: #fff; text-transform: uppercase; letter-spacing: 1.5px; }
+        .home-calc-header p { font-size: 13px; color: #94a3b8; margin-top: 4px; }
+        .home-calc-icon { font-size: 36px; flex-shrink: 0; }
+        .home-calc-body { display: flex; align-items: flex-end; gap: 16px; flex-wrap: wrap; }
+        .home-calc-fields { display: flex; gap: 16px; flex-wrap: wrap; flex: 1; }
+        .home-calc-group { display: flex; flex-direction: column; gap: 8px; flex: 1; min-width: 150px; }
+        .home-calc-group label { font-size: 11px; font-weight: 700; color: var(--acik-mavi); text-transform: uppercase; letter-spacing: 0.8px; }
+        .home-calc-group input, .home-calc-group select { padding: 13px 16px; border: 1px solid rgba(56,189,248,0.25); background: rgba(255,255,255,0.06); color: #fff; font-size: 15px; font-family: inherit; border-radius: 4px; transition: border-color 0.2s; }
+        .home-calc-group input:focus, .home-calc-group select:focus { outline: none; border-color: var(--acik-mavi); background: rgba(255,255,255,0.1); }
         .home-calc-group input::placeholder { color: #94a3b8; }
-        .home-calc-group select option { background: var(--ana-lacivert); color: #fff; }
-        .home-calc-btn { background: var(--acik-mavi); color: #0B2545; padding: 13px 32px; border: none; font-weight: 900; font-size: 13px; text-transform: uppercase; cursor: pointer; white-space: nowrap; align-self: flex-end; letter-spacing: 0.8px; flex-shrink: 0; transition: background 0.2s; }
-        .home-calc-btn:hover { background: #fff; color: var(--ana-lacivert); }
-        .home-calc-result { display: flex; align-items: center; gap: 10px; background: rgba(141,169,196,0.12); border: 1px solid var(--acik-mavi); border-left: 4px solid var(--acik-mavi); padding: 13px 20px; font-size: 18px; font-weight: 900; color: var(--acik-mavi); white-space: nowrap; flex-shrink: 0; align-self: flex-end; }
-        @media (max-width: 900px) { .home-calc-body { flex-direction: column; align-items: stretch; } .home-calc-result { font-size: 16px; } }
+        .home-calc-group select option { background: #0B2545; color: #fff; }
+        .home-calc-btn { background: var(--acik-mavi); color: #0B2545; padding: 14px 36px; border: none; font-weight: 900; font-size: 14px; text-transform: uppercase; cursor: pointer; white-space: nowrap; align-self: flex-end; letter-spacing: 1px; flex-shrink: 0; border-radius: 4px; transition: background 0.2s, transform 0.1s; }
+        .home-calc-btn:hover { background: #fff; color: var(--ana-lacivert); transform: translateY(-1px); }
+        .home-calc-result { display: flex; align-items: center; justify-content: center; gap: 12px; background: rgba(56,189,248,0.1); border: 1px solid rgba(56,189,248,0.4); border-left: 4px solid var(--acik-mavi); padding: 14px 24px; font-size: 20px; font-weight: 900; color: var(--acik-mavi); flex-shrink: 0; align-self: flex-end; border-radius: 4px; min-width: 180px; }
 
         /* Makine Parkuru Sayfası */
         .machine-banner { background: linear-gradient(rgba(7,25,49,0.88), rgba(11,37,69,0.95)), url('images/foto7.jpeg') no-repeat center center/cover; color:#fff; text-align:center; padding:110px 20px; }
@@ -498,11 +498,38 @@
         }
 
         @media (max-width: 900px) {
-            .header-container { position: relative; }
+            /* Header */
+            .header-container { position: relative; padding: 10px 16px; }
             nav { display: none; }
             .hamburger { display: flex; }
+
+            /* Hero */
+            .hero { padding: 70px 16px 60px; }
+            .hero h1 { font-size: 26px; line-height: 1.35; margin-bottom: 16px; }
+            .hero p { font-size: 14px; margin-bottom: 28px; line-height: 1.7; }
+            .hero button { padding: 13px 28px; font-size: 12px; }
+
+            /* Genel bölümler */
+            section { padding: 48px 16px; }
+            .section-title { font-size: 22px; margin-bottom: 10px; }
+            .section-subtitle { font-size: 13px; margin-bottom: 36px; }
+
+            /* Hesaplayıcı — mobilde kart görünümü */
+            .home-calc-strip { padding: 28px 16px; }
+            .home-calc-header { gap: 10px; margin-bottom: 20px; }
+            .home-calc-header h3 { font-size: 16px; }
+            .home-calc-header p { font-size: 12px; }
+            .home-calc-icon { font-size: 26px; }
+            .home-calc-body { flex-direction: column; align-items: stretch; gap: 12px; }
+            .home-calc-fields { flex-direction: column; gap: 12px; }
+            .home-calc-group { min-width: unset; }
+            .home-calc-btn { width: 100%; padding: 14px; font-size: 14px; }
+            .home-calc-result { font-size: 20px; justify-content: center; padding: 16px; }
+
+            /* Grid'ler */
             .about-stats { grid-template-columns: 1fr 1fr; }
             .career-split, .contact-wrapper, .about-vision-mission { grid-template-columns: 1fr; }
+            .stat-box h3 { font-size: 28px; }
         }
 
         @media (min-width: 901px) {
@@ -529,7 +556,6 @@
             </nav>
             <div class="controls">
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
-                <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
                 <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menü">
                     <span></span><span></span><span></span>
                 </button>
