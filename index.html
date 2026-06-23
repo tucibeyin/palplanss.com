@@ -427,27 +427,31 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            gap: 5px;
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            gap: 6px;
+            background: var(--acik-mavi);
+            border: none;
             border-radius: 6px;
             cursor: pointer;
-            padding: 8px 10px;
+            padding: 10px 12px;
             margin-left: 12px;
+            transition: background 0.2s, transform 0.1s;
         }
+
+        .hamburger:hover { background: #7dd3f0; transform: scale(1.05); }
 
         .hamburger span {
             display: block;
-            width: 22px;
-            height: 2px;
-            background: #fff;
+            width: 24px;
+            height: 2.5px;
+            background: #0B2545;
             border-radius: 2px;
             transition: all 0.3s ease;
         }
 
-        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open { background: #e2e8f0; }
+        .hamburger.open span:nth-child(1) { transform: translateY(8.5px) rotate(45deg); }
         .hamburger.open span:nth-child(2) { opacity: 0; }
-        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+        .hamburger.open span:nth-child(3) { transform: translateY(-8.5px) rotate(-45deg); }
 
         /* Mobil nav dropdown */
         .mobile-nav {
@@ -596,9 +600,26 @@
                         <div class="home-calc-group">
                             <label data-tr="Profil Tipi" data-en="Profile Type">Profil Tipi</label>
                             <select id="hc-type">
-                                <option value="75">Hafif / Orta — GU 16-22 (~75 kg/m²)</option>
-                                <option value="120">Ağır — Larssen / PU 28 (~120 kg/m²)</option>
-                                <option value="160">Ekstra Ağır / Deniz (~160 kg/m²)</option>
+                                <optgroup label="── Hafif Profiller">
+                                    <option value="55">GU 6-N / GU 7-N  (~55 kg/m²)</option>
+                                    <option value="63">GU 12 / GU 13  (~63 kg/m²)</option>
+                                    <option value="72">GU 16 / GU 18  (~72 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Orta Profiller">
+                                    <option value="82" selected>GU 20 / GU 22  (~82 kg/m²)</option>
+                                    <option value="95">PU 12 / PU 18  (~95 kg/m²)</option>
+                                    <option value="105">PU 22 / Larssen 430  (~105 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Ağır Profiller">
+                                    <option value="120">PU 28 / Larssen 602  (~120 kg/m²)</option>
+                                    <option value="135">AZ 36 / AZ 40  (~135 kg/m²)</option>
+                                    <option value="150">AZ 46 / AZ 50  (~150 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Ekstra Ağır / Deniz">
+                                    <option value="165">HZ 775 A/B  (~165 kg/m²)</option>
+                                    <option value="185">HZ 975 A/B  (~185 kg/m²)</option>
+                                    <option value="210">HZ 1080 / Rör Palplanş  (~210 kg/m²)</option>
+                                </optgroup>
                             </select>
                         </div>
                         <div class="home-calc-group">
@@ -1586,9 +1607,26 @@
                         <div class="calc-group">
                             <label data-tr="Palplanş Profil Tipi" data-en="Sheet Pile Profile Type">Palplanş Profil Tipi</label>
                             <select id="calc-type">
-                                <option value="75">Hafif / Orta Tip (GU 16-22) ~ 75kg/m²</option>
-                                <option value="120">Ağır Tip (Larssen / PU 28) ~ 120kg/m²</option>
-                                <option value="160">Ekstra Ağır / Deniz Tipi ~ 160kg/m²</option>
+                                <optgroup label="── Hafif Profiller">
+                                    <option value="55">GU 6-N / GU 7-N  (~55 kg/m²)</option>
+                                    <option value="63">GU 12 / GU 13  (~63 kg/m²)</option>
+                                    <option value="72">GU 16 / GU 18  (~72 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Orta Profiller">
+                                    <option value="82" selected>GU 20 / GU 22  (~82 kg/m²)</option>
+                                    <option value="95">PU 12 / PU 18  (~95 kg/m²)</option>
+                                    <option value="105">PU 22 / Larssen 430  (~105 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Ağır Profiller">
+                                    <option value="120">PU 28 / Larssen 602  (~120 kg/m²)</option>
+                                    <option value="135">AZ 36 / AZ 40  (~135 kg/m²)</option>
+                                    <option value="150">AZ 46 / AZ 50  (~150 kg/m²)</option>
+                                </optgroup>
+                                <optgroup label="── Ekstra Ağır / Deniz">
+                                    <option value="165">HZ 775 A/B  (~165 kg/m²)</option>
+                                    <option value="185">HZ 975 A/B  (~185 kg/m²)</option>
+                                    <option value="210">HZ 1080 / Rör Palplanş  (~210 kg/m²)</option>
+                                </optgroup>
                             </select>
                         </div>
                         <div class="calc-group">
