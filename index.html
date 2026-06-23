@@ -426,12 +426,87 @@
         .down { color: var(--bist-kirmizi); font-weight: bold; }
         @keyframes marquee { 0% { transform: translate3d(0, 0, 0); } 100% { transform: translate3d(-100%, 0, 0); } }
 
-        @media (max-width: 1200px) {
-            .header-container { flex-direction: column; gap: 15px; text-align: center; }
-            nav { flex-wrap: wrap; justify-content: center; gap: 10px; }
-            nav button { margin-left: 8px; margin-right: 8px; }
+        /* Hamburger butonu — sadece mobilde görünür */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            border-radius: 6px;
+            cursor: pointer;
+            padding: 8px 10px;
+            margin-left: 12px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.open span:nth-child(2) { opacity: 0; }
+        .hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Mobil nav dropdown */
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: rgba(11, 37, 69, 0.99);
+            border-top: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+            z-index: 999;
+            flex-direction: column;
+            padding: 12px 0;
+        }
+
+        body.dark-theme .mobile-nav {
+            background: rgba(2, 6, 23, 0.99);
+        }
+
+        .mobile-nav.open {
+            display: flex;
+        }
+
+        .mobile-nav button {
+            background: none;
+            border: none;
+            color: #cbd5e1;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 14px 24px;
+            text-align: left;
+            cursor: pointer;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .mobile-nav button:hover, .mobile-nav button.active {
+            color: #fff;
+            background: rgba(255,255,255,0.06);
+        }
+
+        @media (max-width: 900px) {
+            .header-container { position: relative; }
+            nav { display: none; }
+            .hamburger { display: flex; }
             .about-stats { grid-template-columns: 1fr 1fr; }
             .career-split, .contact-wrapper, .about-vision-mission { grid-template-columns: 1fr; }
+        }
+
+        @media (min-width: 901px) {
+            .mobile-nav { display: none !important; }
         }
     </style>
 </head>
@@ -455,8 +530,23 @@
             <div class="controls">
                 <button class="theme-toggle" onclick="toggleTheme()">🌙</button>
                 <button class="lang-toggle" onclick="toggleLanguage()">EN</button>
+                <button class="hamburger" id="hamburger-btn" onclick="toggleMobileNav()" aria-label="Menü">
+                    <span></span><span></span><span></span>
+                </button>
             </div>
         </div>
+        <!-- Mobil dropdown menü -->
+        <nav class="mobile-nav" id="mobile-nav">
+            <button id="mnav-anasayfa" class="active" onclick="showPage('anasayfa');closeMobileNav()" data-tr="Anasayfa" data-en="Home">Anasayfa</button>
+            <button id="mnav-hakkimizda" onclick="showPage('hakkimizda');closeMobileNav()" data-tr="Hakkımızda" data-en="About Us">Hakkımızda</button>
+            <button id="mnav-hizmetler" onclick="showPage('hizmetler');closeMobileNav()" data-tr="Hizmetlerimiz" data-en="Services">Hizmetlerimiz</button>
+            <button id="mnav-projeler" onclick="showPage('projeler');closeMobileNav()" data-tr="Projelerimiz" data-en="Projects">Projelerimiz</button>
+            <button id="mnav-referanslar" onclick="showPage('referanslar');closeMobileNav()" data-tr="Referanslarımız" data-en="References">Referanslarımız</button>
+            <button id="mnav-makineler" onclick="showPage('makineler');closeMobileNav()" data-tr="Makine Parkuru" data-en="Fleet">Makine Parkuru</button>
+            <button id="mnav-belgeler" onclick="showPage('belgeler');closeMobileNav()" data-tr="Belgelerimiz" data-en="Documents">Belgelerimiz</button>
+            <button id="mnav-kariyer" onclick="showPage('kariyer');closeMobileNav()" data-tr="Kariyer" data-en="Careers">Kariyer</button>
+            <button id="mnav-iletisim" onclick="showPage('iletisim');closeMobileNav()" data-tr="İletişim" data-en="Contact">İletişim</button>
+        </nav>
     </header>
 
     <!-- 1. SAYFA: ANASAYFA -->
@@ -1547,15 +1637,31 @@
                 selectedPage.classList.add('active-page');
             }
 
-            const buttons = document.querySelectorAll('nav button');
+            // Desktop nav
+            const buttons = document.querySelectorAll('nav:not(.mobile-nav) button');
             buttons.forEach(btn => btn.classList.remove('active'));
-            
             const activeBtn = document.getElementById('nav-' + pageId);
-            if(activeBtn) {
-                activeBtn.classList.add('active');
-            }
+            if(activeBtn) activeBtn.classList.add('active');
+
+            // Mobil nav
+            const mobileButtons = document.querySelectorAll('.mobile-nav button');
+            mobileButtons.forEach(btn => btn.classList.remove('active'));
+            const activeMobileBtn = document.getElementById('mnav-' + pageId);
+            if(activeMobileBtn) activeMobileBtn.classList.add('active');
 
             window.scrollTo(0, 0);
+        }
+
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobile-nav');
+            const btn = document.getElementById('hamburger-btn');
+            nav.classList.toggle('open');
+            btn.classList.toggle('open');
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('open');
+            document.getElementById('hamburger-btn').classList.remove('open');
         }
 
         // 2. Karanlık Mod Geçiş Sistemi
